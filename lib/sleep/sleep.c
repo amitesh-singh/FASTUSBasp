@@ -15,10 +15,10 @@ __attribute__ ((used)) void sys_tick_handler(void)
 
 void clock_setup(void)
 {
-  //72/8 = 9 MHz
+  //48/8 = 6 MHz
   systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8);
-  // 9e6/9000 (N) = 1000 = 1 ms; N - 1 = is the argument 
-  systick_set_reload(8999);
+  // 6e6/6000 (N) = 1000 = 1 ms; N - 1 = is the argument 
+  systick_set_reload(5999);
   systick_interrupt_enable();
 
   // start counting
