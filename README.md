@@ -1,6 +1,6 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 
-This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. It can read/write to flash/eeprom at theoritical SPI speed of 3 MBps
+This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
 
 ### how to compile and upload the firmware
 #### compile
@@ -110,3 +110,8 @@ $ hexdump flash.bin
 0000090 cfeb 94f8 cfff                         
 
 ```
+
+#### Flash Read/Write speed
+
+Flash Write speed: 15 KBps  
+Flash Read Speed: 52.5 KBps
