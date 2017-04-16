@@ -13,6 +13,13 @@
   )
 
   (page A4)
+  (title_block
+    (title "FASTUSBasp Adapter Board")
+    (date 2017-04-16)
+    (rev 0.1)
+    (company "Amitesh Singh")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
@@ -65,7 +72,7 @@
     (visible_elements FFFFFF7F)
     (pcbplotparams
       (layerselection 0x010f0_80000001)
-      (usegerberextensions false)
+      (usegerberextensions true)
       (excludeedgelayer true)
       (linewidth 0.100000)
       (plotframeref false)
@@ -87,7 +94,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory /home/ami/repos/FASTUSBasp/kicad/gerber/))
   )
 
   (net 0 "")
