@@ -86,18 +86,6 @@ Wire Wire Line
 	7800 2000 7800 4000
 Wire Wire Line
 	7800 4000 8300 4000
-Wire Wire Line
-	8300 4100 7600 4100
-Wire Wire Line
-	7600 4100 7600 2700
-Wire Wire Line
-	7600 2700 7300 2700
-Wire Wire Line
-	8300 4200 7450 4200
-Wire Wire Line
-	7450 4200 7450 2550
-Wire Wire Line
-	7450 2550 7300 2550
 NoConn ~ 5200 3150
 NoConn ~ 5200 3300
 NoConn ~ 5200 3450
@@ -111,8 +99,6 @@ NoConn ~ 5200 4500
 NoConn ~ 5200 4650
 NoConn ~ 5200 4800
 NoConn ~ 5200 4950
-NoConn ~ 5200 5100
-NoConn ~ 5200 5250
 NoConn ~ 7300 4050
 NoConn ~ 7300 4200
 NoConn ~ 7300 4350
@@ -144,4 +130,26 @@ Text Label 8300 4100 0    60   ~ 0
 Vcc_3.3v
 Text Label 8300 4200 0    60   ~ 0
 GND
+Wire Wire Line
+	5200 5250 5100 5250
+Wire Wire Line
+	5100 5250 5100 5500
+Wire Wire Line
+	5100 5500 8000 5500
+Wire Wire Line
+	8000 5500 8000 4100
+Wire Wire Line
+	8000 4100 8300 4100
+Wire Wire Line
+	8300 4200 8150 4200
+Wire Wire Line
+	8150 4200 8150 5600
+Wire Wire Line
+	8150 5600 5000 5600
+Wire Wire Line
+	5000 5600 5000 5100
+Wire Wire Line
+	5000 5100 5200 5100
+NoConn ~ 7300 2550
+NoConn ~ 7300 2700
 $EndSCHEMATC
