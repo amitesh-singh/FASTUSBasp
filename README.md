@@ -7,7 +7,7 @@ This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-p
 Refer my post on how to setup stm32 devlopment environment on Arch linux.
 http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-arch-linux.html
 
-Make sure you compile `libopencm3` library.
+Make sure you have compiled `libopencm3` library.
 
 ```shell
 $ git clone https://github.com/amitesh-singh/FASTUSBasp

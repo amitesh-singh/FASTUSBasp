@@ -3,7 +3,7 @@
   (general
     (links 24)
     (no_connects 0)
-    (area 46.939999 20.269999 120.700001 146.100001)
+    (area 46.739999 20.269999 120.900001 146.100001)
     (thickness 1.6)
     (drawings 43)
     (tracks 92)
@@ -94,7 +94,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory /home/ami/repos/FASTUSBasp/kicad2/gerber/))
+      (outputdirectory /home/ami/repos/FASTUSBasp/kicad2/pan-gerber/))
   )
 
   (net 0 "")
