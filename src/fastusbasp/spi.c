@@ -1,9 +1,9 @@
 /*
- * Most of the code is copied from official USBasp firmware code.
- * Copyright (C) 2011 Thomas Fischl <tfischl@gmx.de>
- *
  * FASTUSBasp - Fastest programmer for AVR
  * Copyright (C) 2017  Amitesh Singh <singh.amitesh@gmail.com>
+ *
+ * Most of the code is copied from official USBasp firmware code.
+ * Copyright (C) 2011 Thomas Fischl <tfischl@gmx.de>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
