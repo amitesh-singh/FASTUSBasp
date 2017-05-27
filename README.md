@@ -115,3 +115,9 @@ $ hexdump flash.bin
 
 Flash Write speed: 15 KBps  
 Flash Read Speed: 52.5 KBps
+
+#### Links
+
+- https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
+- http://amitesh-singh.github.io/stm32/2017/05/21/FASTUSBasp-programmer-avr.html
+
