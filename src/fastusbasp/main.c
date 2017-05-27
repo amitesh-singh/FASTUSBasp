@@ -28,7 +28,10 @@
 #include <stdlib.h>
 #include <libopencm3/usb/usbd.h>
 
+#ifdef DEBUG
 #include "usart1.h"
+#endif
+
 #include "sleep.h"
 
 #include "usbdevice.h"
