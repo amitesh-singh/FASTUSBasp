@@ -46,6 +46,8 @@ find_program(ARM_STRIP arm-none-eabi-strip
 
 find_program(ST_FLASH st-flash)
 find_program(ST_INFO st-info)
+find_program(OPENOCD openocd)
+
 
 CMAKE_FORCE_C_COMPILER(${ARM_CC} GNU)
 CMAKE_FORCE_CXX_COMPILER(${ARM_CXX} GNU)
@@ -98,5 +100,6 @@ function(add_executable_stm32f1 NAME)
     add_custom_target(${NAME}-size COMMAND ${ARM_SIZE} ${NAME}.elf)
     add_custom_target(${NAME}-probe COMMAND ${ST_INFO} --probe)
     add_custom_target(${NAME}-upload COMMAND ${ST_FLASH} write ${NAME}.bin 0x08000000)
+     add_custom_target(${NAME}-ocdupload COMMAND ${OPENOCD} -f interface/stlink-v2.cfg -f target/stm32f103.cfg -c init -c "reset halt" -c "flash write_image erase ${NAME}.bin 0x08000000" -c "reset")
 
 endfunction(add_executable_stm32f1)
