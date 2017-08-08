@@ -63,7 +63,7 @@ endif ()
 
 add_definitions(-DSTM32F1)
 
-set(STM32F1_FLAGS "-Os -g -mcpu=cortex-m3 -mthumb -mthumb-interwork -msoft-float" CACHE STRING "")
+set(STM32F1_FLAGS "-Os -ggdb -mcpu=cortex-m3 -mthumb -mthumb-interwork -msoft-float" CACHE STRING "")
 #Note: remove -fdata-sections and -ffunction-sections fixes problem in which ISR
 # is not getting called.
 # Well, we can use -fdata-sections & -ffunction-sections if 
@@ -90,7 +90,7 @@ function(add_executable_stm32f1 NAME)
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${NAME}.bin")
 
    add_custom_command(OUTPUT ${NAME}.bin
-                      COMMAND ${ARM_STRIP} ${NAME}.elf
+                     #COMMAND ${ARM_STRIP} ${NAME}.elf
                       COMMAND ${CMAKE_OBJCOPY} -Obinary ${NAME}.elf ${NAME}.bin
                       COMMAND ${ARM_SIZE} ${NAME}.elf
                       DEPENDS ${NAME})
