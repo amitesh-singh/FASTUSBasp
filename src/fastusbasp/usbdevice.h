@@ -30,6 +30,14 @@
 #define USBASP_FUNC_SETLONGADDRESS 9
 #define USBASP_FUNC_SETISPSCK      10
 
+/* TPI capabilities */
+#define USBASP_FUNC_TPI_CONNECT      11
+#define USBASP_FUNC_TPI_DISCONNECT   12
+#define USBASP_FUNC_TPI_RAWREAD      13
+#define USBASP_FUNC_TPI_RAWWRITE     14
+#define USBASP_FUNC_TPI_READBLOCK    15
+#define USBASP_FUNC_TPI_WRITEBLOCK   16
+
 #define USBASP_FUNC_GETCAPABILITIES 127
 
 // programming state
@@ -43,7 +51,9 @@
 #define PROG_BLOCKFLAG_FIRST    1
 #define PROG_BLOCKFLAG_LAST     2
 
+#include "config.h"
 #include "spi.h"
+#include "tpi.h"
 
 static uint8_t prog_new_mode = 0;
 static uint32_t prog_address;
@@ -332,6 +342,39 @@ control_request(usbd_device *dev, struct usb_setup_data *req,
         // set new address
         prog_address = (req->wIndex << 16) | req->wValue;
         (*len) = 0;
+     }
+     else if (req->bRequest == USBASP_FUNC_TPI_CONNECT)
+     {
+       //make RST high?
+       rcc_periph_clock_enable(RCC_GPIOA);
+       gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_10_MHZ,
+                            GPIO_CNF_OUTPUT_PUSHPULL,
+                            TPI_RST | TPI_CLK | TPI_DATA);
+  
+       gpio_set(GPIOA, TPI_RST);
+       msleep(3);
+       gpio_clear(GPIOA, TPI_RST);
+       
+       msleep(5); //clockwait 16
+       tpi_init();
+    }
+     else if (req->bRequest == USBASP_FUNC_TPI_DISCONNECT)
+     {
+       tpi_send(0xC0);
+       tpi_send(0);
+
+       msleep(1);
+
+       gpio_set(GPIOA, TPI_RST);
+       msleep(2);
+       gpio_clear(GPIOA, TPI_RST);
+       msleep(2);
+              
+     }
+     else if (req->bRequest == USBASP_FUNC_TPI_RAWREAD)
+     {
+       (*buf)[0] = tpi_recv();
+       (*len) = 1;
      }
 
    return 1;

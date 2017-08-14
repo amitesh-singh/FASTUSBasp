@@ -4,10 +4,6 @@
 #include <libopencm3/stm32/rcc.h>
 #include "sleep.h"
 
-#define TPI_DATA ISP_MOSI
-#define TPI_CLK ISP_SCK
-#define TPI_RST ISP_RST 
-
 void tpi_clk()
 {
   msleep(1); //should be 10 uS
@@ -17,11 +13,6 @@ void tpi_clk()
 
 void tpi_init()
 {
-  rcc_periph_clock_enable(RCC_GPIOA);
-  gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_10_MHZ,
-                            GPIO_CNF_OUTPUT_PUSHPULL,
-                            TPI_RST | TPI_CLK | TPI_DATA);
-  
   msleep(128);
    
   for (uint8_t i  = 0; i < 33; ++i)
@@ -96,9 +87,10 @@ uint8_t tpi_recv()
   tpi_clk();
 
 	//while(TPI_PIN & (1 << TPI_DATA)) {
-	while (gpio_read(GPIOA, TPI_DATA))
+	while(gpio_get(GPIOA, TPI_DATA))
   {	
-    tpi_clk(); tpi_clk();
+    tpi_clk();
+    tpi_clk();
 	}
 
 	uint8_t ret = 0;
@@ -110,7 +102,7 @@ uint8_t tpi_recv()
     tpi_clk();
 		ret >>= 1;
 		//if(TPI_PIN & (1 << TPI_DATA)) {
-			while (gpio_read(GPIOA, TPI_DATA))
+			while (gpio_get(GPIOA, TPI_DATA))
       {
     	ret |= 0x80;
 			parity ^= 1;
@@ -119,17 +111,17 @@ uint8_t tpi_recv()
 
 	tpi_clk(); tpi_clk();
 
-	if(!!gpio_read(GPIOA, TPI_DATA)) != parity) {
+	if(!!gpio_get(GPIOA, TPI_DATA) != parity) {
 		//printf_P(PSTR("parity error\n"));
 	}
 
 	tpi_clk(); tpi_clk();
-	if(!(gpio_read(GPIOA, TPI_DATA))) {
+	if(!(gpio_get(GPIOA, TPI_DATA))) {
 		//printf_P(PSTR("stop bit error\n"));
 	}
 
 	tpi_clk(); tpi_clk();
-	if(!(gpio_read(GPIOA, TPI_DATA))) {
+	if(!(gpio_get(GPIOA, TPI_DATA))) {
 		//printf_P(PSTR("stop bit error\n"));
 	}
 
@@ -153,7 +145,7 @@ void tpi_write_css(uint8_t addr, uint8_t value)
 uint8_t tpi_read_css(uint8_t addr)
 {
 	tpi_send(0x80 | addr);
-	return tpi_receive();
+	return tpi_recv();
 }
 
 void tpi_write_io(uint8_t addr, uint8_t value)
@@ -165,7 +157,7 @@ void tpi_write_io(uint8_t addr, uint8_t value)
 uint8_t tpi_read_io(uint8_t addr)
 {
 	tpi_send(0x10 | (addr & 0x0F) | ((addr & 0x30) << 1));
-	return tpi_receive();
+	return tpi_recv();
 }
 
 void tpi_set_pointer(uint16_t addr)
@@ -179,7 +171,7 @@ void tpi_set_pointer(uint16_t addr)
 uint8_t tpi_read_data(void)
 {
 	tpi_send(0x24);
-	return tpi_receive();
+	return tpi_recv();
 }
 
 void tpi_write_data(uint8_t value)
