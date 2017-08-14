@@ -25,15 +25,7 @@
 #include <libopencm3/stm32/rcc.h>
 #include <stdio.h>
 #include "sleep.h"
-
-#define ISP_PORT GPIOA
-#define ISP_RCC RCC_GPIOA
-
-#define ISP_MOSI GPIO7
-#define ISP_MISO GPIO6
-#define ISP_SCK  GPIO5
-#define ISP_RST GPIO8
-
+#include "config.h"
 
 static uint8_t isp_hiaddr;
 //extern uint8_t prog_sck;
