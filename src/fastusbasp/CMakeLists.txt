@@ -1,4 +1,4 @@
-add_executable_stm32f1(fastusbasp spi.h spi.c usbdevice.h main.c)
+add_executable_stm32f1(fastusbasp config.h tpi.h spi.h spi.c tpi.c usbdevice.h main.c)
 target_include_directories(fastusbasp PUBLIC 
                            ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/usart1
                            ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/sleep)
