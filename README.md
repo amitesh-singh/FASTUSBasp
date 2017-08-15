@@ -1,6 +1,7 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 
 This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
+![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
 ### how to compile and upload the firmware
 #### compile
