@@ -126,6 +126,12 @@ Flash Read Speed: 52.5 KBps
                          375 KHz  
                          187.5 KHz  
 
+### updates 
+
+#### 15th Aug 2017
+made the board on perfboard.
+![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
+
 #### Links
 
 - https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
