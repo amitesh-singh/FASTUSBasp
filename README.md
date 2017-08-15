@@ -116,6 +116,16 @@ $ hexdump flash.bin
 Flash Write speed: 15 KBps  
 Flash Read Speed: 52.5 KBps
 
+### Bit clock speed
+`FASTUSBasp` starts out with a fast ISP clock frequency (default: 3 MHz),
+   so the `-B bitclock` option might be required to achieve stable communication.
+#### Supported bitclock speed
+   default (without -B): 3 MHz  
+                         1.5 MHz  
+                         750 KHz  
+                         375 KHz  
+                         187.5 KHz  
+
 #### Links
 
 - https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
