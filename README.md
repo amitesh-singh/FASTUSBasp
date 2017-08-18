@@ -17,10 +17,21 @@ $ cmake .
 $ make
 ```
 ##### Upload the firmware
+###### using STLINK
 connect `st-link` programmer to `blue-pill` and upload the firmware
 
 ```shell
 $ make fastusbasp-upload
+
+```
+
+###### using serial port 
+Install `stm32flash` utility on linux.
+Connect any usb to uart converter device and connect PA9 to RXD and PA10 to TXD
+and connect GND.
+
+```shell
+$ make fastusbasp-serialupload
 
 ```
 
