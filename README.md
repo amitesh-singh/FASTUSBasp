@@ -1,6 +1,14 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 
 This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
+
+#### PCBs
+![pcb1](https://pbs.twimg.com/media/DIJDorbU0AA_CXj.jpg)
+![pcb2](https://pbs.twimg.com/media/DIJDorIVYAAW44e.jpg)
+![pcb3](https://pbs.twimg.com/media/DIJDoq_U0AA3YuE.jpg)
+![pcb4](https://pbs.twimg.com/media/DIJDorFU0AUCKKl.jpg)
+
+#### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
 ### how to compile and upload the firmware
@@ -130,13 +138,15 @@ Flash Read Speed: 52.5 KBps
 
 ### Bit clock speed
 `FASTUSBasp` starts out with a fast ISP clock frequency (default: 3 MHz),
-   so the `-B bitclock` option might be required to achieve stable communication.
+   so the `-B bitclock` option might be required to achieve stable communication
+in case `F_CPU` is bit low < 12MHz
 #### Supported bitclock speed
-   default (without -B): 3 MHz  
-                         1.5 MHz  
-                         750 KHz  
-                         375 KHz  
-                         187.5 KHz  
+ 
+- default (without -B): 3 MHz  
+- 1.5 MHz  
+- 750 KHz  
+- 375 KHz  
+- 187.5 KHz  
 
 ### updates 
 
