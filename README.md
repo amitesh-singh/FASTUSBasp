@@ -11,7 +11,17 @@ This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-p
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
-### how to compile and upload the firmware
+### how to upload firmware
+
+The pre-compiled binary is at `firmware/fastusbasp.bin`.
+
+```shell
+$ st-flash write firmware/fastusbasp.bin 0x08000000
+```
+
+### how to compile from source and upload the firmware
+If you want to build fastusbasp firmware from source code, follow below guidelines.
+
 #### compile
 Refer my post on how to setup stm32 devlopment environment on Arch linux.
 http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-arch-linux.html
