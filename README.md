@@ -1,5 +1,7 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 
+[![Join the chat at https://gitter.im/FASTUSBasp/Lobby](https://badges.gitter.im/FASTUSBasp/Lobby.svg)](https://gitter.im/FASTUSBasp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
 
 #### PCBs
