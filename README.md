@@ -12,6 +12,12 @@ This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-p
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
+### Correcting wrong pullup at USB D+
+
+This blue pill board has wrong pullup resistor at usb D+ line.
+You might need to fix it before you use blue pill as an AVR programmer.
+Refer to this guide: [http://amitesh-singh.github.io/stm32/2017/10/09/correcting-usbpullup-resistor.html][fixpullup-link]
+
 ### how to upload firmware
 
 The pre-compiled binary is at `firmware/fastusbasp.bin`.
@@ -175,3 +181,4 @@ made the board on perfboard.
 - https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
 - http://amitesh-singh.github.io/stm32/2017/05/21/FASTUSBasp-programmer-avr.html
 
+[fixpullup-link]: http://amitesh-singh.github.io/stm32/2017/10/09/correcting-usbpullup-resistor.html
