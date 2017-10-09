@@ -178,7 +178,7 @@ made the board on perfboard.
 
 #### Links
 
-- https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
 - http://amitesh-singh.github.io/stm32/2017/05/21/FASTUSBasp-programmer-avr.html
+- https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
 
 [fixpullup-link]: http://amitesh-singh.github.io/stm32/2017/10/09/correcting-usbpullup-resistor.html
