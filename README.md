@@ -15,7 +15,7 @@ This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-p
 ### Correcting wrong pullup at USB D+
 
 This blue pill board has wrong pullup resistor at usb D+ line.
-You might need to fix it before you use blue pill as an AVR programmer.
+You might need to fix it before using blue pill as an AVR programmer.
 Refer to this guide: [http://amitesh-singh.github.io/stm32/2017/10/09/correcting-usbpullup-resistor.html][fixpullup-link]
 
 ### how to upload firmware
