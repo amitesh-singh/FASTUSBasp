@@ -12,7 +12,18 @@ This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-p
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
-### how to compile and upload the firmware
+### how to upload firmware
+
+The pre-compiled binary is at `firmware/fastusbasp.bin`.
+
+```shell
+$ git clone https://github.com/amitesh-singh/FASTUSBasp
+$ st-flash write firmware/fastusbasp.bin 0x08000000
+```
+
+### how to compile from source and upload the firmware
+If you want to build fastusbasp firmware from source code, follow below guidelines.
+
 #### compile
 Refer my post on how to setup stm32 devlopment environment on Arch linux.
 http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-arch-linux.html
@@ -25,8 +36,8 @@ $ vi config.cmake  # set the libopencm3 path here
 $ cmake .
 $ make
 ```
-##### Upload the firmware
-###### using STLINK
+#### Upload the firmware
+##### using STLINK
 connect `st-link` programmer to `blue-pill` and upload the firmware
 
 ```shell
@@ -34,8 +45,12 @@ $ make fastusbasp-upload
 
 ```
 
-###### using serial port 
+##### using serial port
+
 Install `stm32flash` utility on linux.
+To program `stm32f103` via USART, you need to set `BOOT0` as `1`
+and leave `BOOT1` as `0`.
+
 Connect any usb to uart converter device and connect PA9 to RXD and PA10 to TXD
 and connect GND.
 
