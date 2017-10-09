@@ -24,6 +24,7 @@
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
 #include <libopencm3/stm32/flash.h>
+#include "config.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -116,11 +117,13 @@ main()
 
    //This is required if proper pullup is not present at D+ line.
    // This is must for chinese stm32f103c8t6 aka "blue pill"
+#if USBDPLUS_WRONG_PULLUP == 1
    rcc_periph_clock_enable(RCC_GPIOA);
    gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, GPIO12);
    gpio_clear(GPIOA, GPIO12);
    msleep(5);
+#endif
 
    // USB initialization
    usbd_dev = usbd_init(&st_usbfs_v1_usb_driver, &dev_descr, &config,

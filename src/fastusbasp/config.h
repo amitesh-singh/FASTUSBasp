@@ -9,4 +9,8 @@
 #define ISP_SCK  GPIO5
 #define ISP_RST GPIO8
 
+//define this to 1, if blue pill has wrong pull up at USB D+ line
+#define USBDPLUS_WRONG_PULLUP 0
+
+
 #endif
