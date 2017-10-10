@@ -67,6 +67,10 @@ $ make fastusbasp-serialupload
 
 ### How to use
 
+#### udev rule
+
+Refer to [udev/README.md](udev/README.md)
+
 #### Probe AVR
 
 ```shell
