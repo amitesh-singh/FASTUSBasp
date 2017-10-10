@@ -165,7 +165,7 @@ Flash Read Speed: 52.5 KBps
 ### Bit clock speed
 `FASTUSBasp` starts out with a fast ISP clock frequency (default: 3 MHz),
    so the `-B bitclock` option might be required to achieve stable communication
-in case `F_CPU` is bit low < 12MHz
+in case target MCU `F_CPU` is bit low < 12MHz
 #### Supported bitclock speed
  
 - default (without -B): 3 MHz  
