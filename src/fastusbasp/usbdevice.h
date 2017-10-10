@@ -209,7 +209,7 @@ write_usb(uint8_t* data, uint16_t len)
 }
 
 /* Buffer to be used for control requests. */
-uint8_t usbd_control_buffer[128];
+static uint8_t usbd_control_buffer[128];
 
 static int
 control_request(usbd_device *dev, struct usb_setup_data *req,

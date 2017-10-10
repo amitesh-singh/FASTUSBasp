@@ -37,9 +37,6 @@
 #include "sleep.h"
 #include "usbdevice.h"
 
-extern uint32_t rcc_ahb_frequency;
-extern uint32_t rcc_apb1_frequency;
-
 void rcc_clock_setup_in_hse_8mhz_out_48mhz(void)
 {
    /* Enable internal high-speed oscillator. */
@@ -56,7 +53,6 @@ void rcc_clock_setup_in_hse_8mhz_out_48mhz(void)
 
    /*
     * Set prescalers for AHB, ADC, ABP1, ABP2.
-    * Do this before touching the PLL (TODO: why?).
     */
    rcc_set_hpre(RCC_CFGR_HPRE_SYSCLK_NODIV);    /* Set. 48MHz Max. 72MHz */
    rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV4);  /* Set. 12MHz Max. 14MHz */
@@ -96,7 +92,7 @@ void rcc_clock_setup_in_hse_8mhz_out_48mhz(void)
 
    /* Set the peripheral clock frequencies used */
    rcc_ahb_frequency = 48000000;
-   rcc_apb1_frequency = 24000000; //TODO: try with 36MHz since apb1 can have speed upto 36Mhz at max
+   rcc_apb1_frequency = 24000000;
    rcc_apb2_frequency = 48000000;
 }
 
@@ -104,7 +100,7 @@ int
 main()
 {
    //rcc_clock_setup_in_hsi_out_48mhz();
-   //set STM32 to 48 MHz using ext. clock
+   //set STM32 to 48 MHz using ext. clock (HSE)
    rcc_clock_setup_in_hse_8mhz_out_48mhz();
 
    inbuilt_led_init();
@@ -117,6 +113,8 @@ main()
 
    //This is required if proper pullup is not present at D+ line.
    // This is must for chinese stm32f103c8t6 aka "blue pill"
+   // set USBDPLUS_WRONG_PULLUP to 1 if blue pill has wrong pullup at D+ line
+   // This code is disabled by default.
 #if USBDPLUS_WRONG_PULLUP == 1
    rcc_periph_clock_enable(RCC_GPIOA);
    gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
