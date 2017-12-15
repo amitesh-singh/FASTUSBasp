@@ -93,33 +93,33 @@ void
 spi_setup(void)
 {
    //GPIOs: SS=PA4, SCK=PA5, MISO=PA6 and MOSI=PA7  
-   rcc_periph_clock_enable(RCC_SPI1);
+   rcc_periph_clock_enable(ISP_CLOCK);
    gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_10_MHZ,
                  GPIO_CNF_OUTPUT_ALTFN_PUSHPULL,
                  ISP_SCK | ISP_MOSI);
 
    gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT,
                  ISP_MISO);
-   spi_reset(SPI1);
+   spi_reset(ISP_BUS);
 
    // works for >= SPI_CR1_BAUDRATE_FPCLK_DIV_16
-   spi_init_master(SPI1, prog_sck,
+   spi_init_master(ISP_BUS, prog_sck,
                    SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
                    SPI_CR1_CPHA_CLK_TRANSITION_1, SPI_CR1_DFF_8BIT,
                    SPI_CR1_MSBFIRST);
    if (prescalar_baudrate >= 0)
-     spi_set_baudrate_prescaler(SPI1, prescalar_baudrate);
+     spi_set_baudrate_prescaler(ISP_BUS, prescalar_baudrate);
 
-   spi_enable_software_slave_management(SPI1);
-   //spi_disable_crc(SPI1);
-   spi_set_nss_high(SPI1);
-   spi_enable(SPI1);
+   spi_enable_software_slave_management(ISP_BUS);
+   //spi_disable_crc(ISP_BUS);
+   spi_set_nss_high(ISP_BUS);
+   spi_enable(ISP_BUS);
 }
 
 uint8_t
 transmit(uint8_t send_byte)
 {
-   return spi_xfer(SPI1, send_byte);
+   return spi_xfer(ISP_BUS, send_byte);
 }
 
 uint8_t
