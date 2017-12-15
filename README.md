@@ -78,6 +78,19 @@ $ make fastusbasp-serialupload
 
 ### How to use
 
+#### connections
+
+It uses SPI2 to communicate to AVR.
+
+Blue pill   ------         AVR   
+PB15        ------     MOSI  
+PB14        ------     MISO  
+PB13        ------     SCK    
+PA8         ------     RST  
+5v or 3.3v  ------     5v   
+GND         ------     GND   
+
+
 #### udev rule
 
 Refer to [udev/README.md](udev/README.md)
