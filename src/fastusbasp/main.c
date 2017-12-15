@@ -103,6 +103,12 @@ main()
    //set STM32 to 48 MHz using ext. clock (HSE)
    rcc_clock_setup_in_hse_8mhz_out_48mhz();
 
+   // set up all the clocks here
+   rcc_periph_clock_enable(ISP_PORT_RCC);
+   rcc_periph_clock_enable(ISP_RST_RCC);
+   rcc_periph_clock_enable(INBUILT_LED_RCC);
+   rcc_periph_clock_enable(ISP_BUS_RCC);
+
    inbuilt_led_init();
 
 #ifdef DEBUG

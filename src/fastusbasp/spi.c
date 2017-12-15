@@ -34,18 +34,14 @@ int8_t prescalar_baudrate = -1;
 
 //! ------- INBUILT LED code
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
-
 void
 inbuilt_led_init(void)
 {
-   rcc_periph_clock_enable(INBUILT_LED_RCC);
    gpio_set_mode(INBUILT_LED_PORT, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, INBUILT_LED);
+
    //switch off GPIO13 LED
-   gpio_set(GPIOC, INBUILT_LED);
+   gpio_set(INBUILT_LED_PORT, INBUILT_LED);
 }
 
 void
@@ -62,7 +58,6 @@ isp_connect(void)
    //led green on
    inbuilt_led_green(1);
 
-   rcc_periph_clock_enable(ISP_RST_RCC);
    gpio_set_mode(ISP_RST_PORT, GPIO_MODE_OUTPUT_10_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, ISP_RST);
 
@@ -92,7 +87,6 @@ isp_disconnect(void)
 void
 spi_setup(void)
 {
-   rcc_periph_clock_enable(ISP_BUS_RCC);
    gpio_set_mode(ISP_PORT, GPIO_MODE_OUTPUT_10_MHZ,
                  GPIO_CNF_OUTPUT_ALTFN_PUSHPULL,
                  ISP_SCK | ISP_MOSI);
