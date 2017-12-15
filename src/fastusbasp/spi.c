@@ -34,18 +34,14 @@ int8_t prescalar_baudrate = -1;
 
 //! ------- INBUILT LED code
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
-
 void
 inbuilt_led_init(void)
 {
-   rcc_periph_clock_enable(INBUILT_LED_RCC);
    gpio_set_mode(INBUILT_LED_PORT, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, INBUILT_LED);
+
    //switch off GPIO13 LED
-   gpio_set(GPIOC, INBUILT_LED);
+   gpio_set(INBUILT_LED_PORT, INBUILT_LED);
 }
 
 void
@@ -62,20 +58,19 @@ isp_connect(void)
    //led green on
    inbuilt_led_green(1);
 
-   rcc_periph_clock_enable(RCC_GPIOA);
-   gpio_set_mode(ISP_PORT, GPIO_MODE_OUTPUT_10_MHZ,
+   gpio_set_mode(ISP_RST_PORT, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, ISP_RST);
 
    spi_setup();
 
    //reset device
-   gpio_clear(ISP_PORT, ISP_RST);
+   gpio_clear(ISP_RST_PORT, ISP_RST);
    gpio_clear(ISP_PORT, ISP_SCK);
 
    msleep(3);
-   gpio_set(ISP_PORT, ISP_RST);
+   gpio_set(ISP_RST_PORT, ISP_RST);
    msleep(3);
-   gpio_clear(ISP_PORT, ISP_RST);
+   gpio_clear(ISP_RST_PORT, ISP_RST);
    isp_hiaddr = 0;
 }
 
@@ -92,13 +87,11 @@ isp_disconnect(void)
 void
 spi_setup(void)
 {
-   //GPIOs: SS=PA4, SCK=PA5, MISO=PA6 and MOSI=PA7  
-   rcc_periph_clock_enable(ISP_CLOCK);
-   gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_10_MHZ,
+   gpio_set_mode(ISP_PORT, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_ALTFN_PUSHPULL,
                  ISP_SCK | ISP_MOSI);
 
-   gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT,
+   gpio_set_mode(ISP_PORT, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT,
                  ISP_MISO);
    spi_reset(ISP_BUS);
 
@@ -107,6 +100,7 @@ spi_setup(void)
                    SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
                    SPI_CR1_CPHA_CLK_TRANSITION_1, SPI_CR1_DFF_8BIT,
                    SPI_CR1_MSBFIRST);
+
    if (prescalar_baudrate >= 0)
      spi_set_baudrate_prescaler(ISP_BUS, prescalar_baudrate);
 
@@ -152,9 +146,9 @@ enter_into_prog_mode(void)
           }
 
         msleep(3);
-        gpio_set(ISP_PORT, ISP_RST);
+        gpio_set(ISP_RST_PORT, ISP_RST);
         msleep(3);
-        gpio_clear(ISP_PORT, ISP_RST);
+        gpio_clear(ISP_RST_PORT, ISP_RST);
         msleep(3);
      }
 
