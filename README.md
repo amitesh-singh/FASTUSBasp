@@ -38,43 +38,6 @@ $ git clone https://github.com/amitesh-singh/FASTUSBasp
 $ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
 ```
 
-### how to compile from source and upload the firmware
-To build fastusbasp firmware from source code, follow below guidelines.
-
-#### compile
-Refer my post on how to setup stm32 devlopment environment on Arch linux.
-http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-arch-linux.html
-
-Make sure you have compiled `libopencm3` library.
-
-```shell
-$ git clone https://github.com/amitesh-singh/FASTUSBasp
-$ vi config.cmake  # set the libopencm3 path here
-$ cmake .
-$ make
-```
-#### Upload the firmware
-##### using STLINK
-connect `st-link` programmer to `blue-pill` and upload the firmware
-
-```shell
-$ make fastusbasp-upload
-
-```
-
-##### using serial port
-
-Install `stm32flash` utility on linux.
-To program `stm32f103` via USART, you need to set `BOOT0` as `1`
-and leave `BOOT1` as `0`.
-
-Connect any usb to uart converter device and connect PA9 to RXD and PA10 to TXD
-and connect GND.
-
-```shell
-$ make fastusbasp-serialupload
-
-```
 
 ### How to use
 
@@ -197,6 +160,45 @@ in case target MCU `F_CPU` is bit low < 12MHz
 - 750 KHz  
 - 375 KHz  
 - 187.5 KHz  
+
+
+### how to compile from source and upload the firmware
+To build fastusbasp firmware from source code, follow below guidelines.
+
+#### compile
+Refer my post on how to setup stm32 devlopment environment on Arch linux.
+http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-arch-linux.html
+
+Make sure you have compiled `libopencm3` library.
+
+```shell
+$ git clone https://github.com/amitesh-singh/FASTUSBasp
+$ vi config.cmake  # set the libopencm3 path here
+$ cmake .
+$ make
+```
+#### Upload the firmware
+##### using STLINK
+connect `st-link` programmer to `blue-pill` and upload the firmware
+
+```shell
+$ make fastusbasp-upload
+
+```
+
+##### using serial port
+
+Install `stm32flash` utility on linux.
+To program `stm32f103` via USART, you need to set `BOOT0` as `1`
+and leave `BOOT1` as `0`.
+
+Connect any usb to uart converter device and connect PA9 to RXD and PA10 to TXD
+and connect GND.
+
+```shell
+$ make fastusbasp-serialupload
+
+```
 
 ### updates 
 
