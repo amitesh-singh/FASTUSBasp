@@ -61,7 +61,7 @@ Refer to [udev/README.md](udev/README.md)
 #### Probe AVR
 
 ```shell
-$ avrdude -c usbasp-clone -p m16 -B0.5
+$ avrdude -c usbasp-clone -p m16
 
 avrdude: AVR device initialized and ready to accept instructions
 
@@ -77,7 +77,7 @@ avrdude done.  Thank you.
 #### Upload program to AVR
 
 ```shell
-$ avrdude -c usbasp-clone -p m16 -U flash:w:blink.hex -B0.5
+$ avrdude -c usbasp-clone -p m16 -U flash:w:blink.hex
 
 avrdude: AVR device initialized and ready to accept instructions
 
@@ -113,7 +113,7 @@ avrdude done.  Thank you.
 
 #### Read flash
 ```shell
-$ avrdude -c usbasp-clone -p m16 -U flash:r:flash.bin:r -B0.5
+$ avrdude -c usbasp-clone -p m16 -U flash:r:flash.bin:r
 
 avrdude: AVR device initialized and ready to accept instructions
 
