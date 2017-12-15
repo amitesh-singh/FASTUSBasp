@@ -39,7 +39,7 @@ $ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
 ```
 
 ### how to compile from source and upload the firmware
-If you want to build fastusbasp firmware from source code, follow below guidelines.
+To build fastusbasp firmware from source code, follow below guidelines.
 
 #### compile
 Refer my post on how to setup stm32 devlopment environment on Arch linux.
