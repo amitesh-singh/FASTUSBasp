@@ -62,8 +62,8 @@ isp_connect(void)
    //led green on
    inbuilt_led_green(1);
 
-   rcc_periph_clock_enable(RCC_GPIOA);
-   gpio_set_mode(ISP_PORT, GPIO_MODE_OUTPUT_10_MHZ,
+   rcc_periph_clock_enable(ISP_RST_RCC);
+   gpio_set_mode(ISP_RST_PORT, GPIO_MODE_OUTPUT_10_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, ISP_RST);
 
    spi_setup();
@@ -92,13 +92,12 @@ isp_disconnect(void)
 void
 spi_setup(void)
 {
-   //GPIOs: SS=PA4, SCK=PA5, MISO=PA6 and MOSI=PA7  
-   rcc_periph_clock_enable(ISP_CLOCK);
-   gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_10_MHZ,
+   rcc_periph_clock_enable(ISP_BUS_RCC);
+   gpio_set_mode(ISP_PORT, GPIO_MODE_OUTPUT_10_MHZ,
                  GPIO_CNF_OUTPUT_ALTFN_PUSHPULL,
                  ISP_SCK | ISP_MOSI);
 
-   gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT,
+   gpio_set_mode(ISP_PORT, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT,
                  ISP_MISO);
    spi_reset(ISP_BUS);
 
