@@ -99,9 +99,9 @@ void rcc_clock_setup_in_hse_8mhz_out_48mhz(void)
 int
 main()
 {
-   //rcc_clock_setup_in_hsi_out_48mhz();
    //set STM32 to 48 MHz using ext. clock (HSE)
    rcc_clock_setup_in_hse_8mhz_out_48mhz();
+
 
    // set up all the clocks here
    rcc_periph_clock_enable(ISP_PORT_RCC);
@@ -122,7 +122,6 @@ main()
    // set USBDPLUS_WRONG_PULLUP to 1 if blue pill has wrong pullup at D+ line
    // This code is disabled by default.
 #if USBDPLUS_WRONG_PULLUP == 1
-   rcc_periph_clock_enable(RCC_GPIOA);
    gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, GPIO12);
    gpio_clear(GPIOA, GPIO12);
