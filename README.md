@@ -20,11 +20,22 @@ Refer to this guide: [http://amitesh-singh.github.io/stm32/2017/10/09/correcting
 
 ### how to upload firmware
 
+#### blue pill board with correct pullup at USB D+ line
+If you have fixed the pullup at D+ line, use `firmware/fastusbasp.bin`
 The pre-compiled binary is at `firmware/fastusbasp.bin`.
 
 ```shell
 $ git clone https://github.com/amitesh-singh/FASTUSBasp
 $ st-flash write firmware/fastusbasp.bin 0x08000000
+```
+
+#### blue pill board with wrong pullup at USB D+ line
+In case, you did not fix the wrong pullup at D+ line, use  
+`firmware/fastusbasp-wrongpullup.bin` binary instead
+
+```shell
+$ git clone https://github.com/amitesh-singh/FASTUSBasp
+$ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
 ```
 
 ### how to compile from source and upload the firmware
