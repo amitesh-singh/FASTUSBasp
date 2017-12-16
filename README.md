@@ -45,14 +45,16 @@ $ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
 
 It uses SPI2 to communicate to AVR.
 
-Blue pill   ------         AVR   
-PB15        ------     MOSI  
-PB14        ------     MISO  
-PB13        ------     SCK    
-PA8         ------     RST  
-5v or 3.3v  ------     5v   
-GND         ------     GND   
+Blue pill | AVR   
+--------- | -------
+PB15  |   MOSI  
+PB14  |   MISO  
+PB13  |   SCK    
+PA8   |   RST  
+5v or 3.3v |     5v   
+GND        |    GND   
 
+All pins SPI2(PB15, PB14, PB13) and RST(PA8) used are 5V tolerant.
 
 #### udev rule
 
