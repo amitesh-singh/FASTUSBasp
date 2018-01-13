@@ -209,7 +209,7 @@ write_usb(uint8_t* data, uint16_t len)
 }
 
 /* Buffer to be used for control requests. */
-static uint8_t usbd_control_buffer[128];
+static uint8_t usbd_control_buffer[256];
 
 static int
 control_request(usbd_device *dev, struct usb_setup_data *req,
@@ -328,7 +328,7 @@ control_request(usbd_device *dev, struct usb_setup_data *req,
    else if (req->bRequest == USBASP_FUNC_SETLONGADDRESS)
      {
         // set new mode of address delivering (ignore address delivered in commands)
-        prog_address = 1;
+	   prog_new_mode = true;
         // set new address
         prog_address = (req->wIndex << 16) | req->wValue;
         (*len) = 0;
