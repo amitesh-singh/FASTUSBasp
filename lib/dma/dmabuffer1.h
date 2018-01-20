@@ -16,27 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef _DMA_BUFFER_1_H
+#define _DMA_BUFFER_1_H
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
+#include "dmabuffer.h"
 
-#define ISP_BUS SPI2
-#define ISP_BUS_RCC RCC_SPI2
+dmabuffer<DMA1, DMA_CHANNEL1> dma1Ch1Buffer;
 
-#define ISP_PORT_RCC RCC_GPIOB
-#define ISP_PORT GPIOB
-#define ISP_MOSI GPIO15
-#define ISP_MISO GPIO14
-#define ISP_SCK  GPIO13
+extern "C" void dma1_channel1_isr(void)
+{
+   if ((DMA1_ISR &DMA_ISR_TCIF1) != 0)
+     {
+        DMA1_IFCR |= DMA_IFCR_CTCIF1;
 
-#define ISP_RST_RCC RCC_GPIOA
-#define ISP_RST_PORT GPIOA
-#define ISP_RST GPIO8
+        dma1Ch1Buffer.transferred = true;
+        if (dma1Ch1Buffer._dma_cb) dma1Ch1Buffer._dma_cb();
+     }
 
-//define this to 1, if blue pill has wrong pull up at USB D+ line
-#define USBDPLUS_WRONG_PULLUP 0
+   dma_disable_channel(DMA1, DMA_CHANNEL1);
+   //we need this below line if we want enable and disable dma complete interrupt 
+   // on every buffer copy
+
+   //dma_disable_transfer_complete_interrupt(DMA1, DMA_CHANNEL1);
+
+   //DMA TCIF is an event flag and means trasnfer is completed.
+   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL1, DMA_TCIF);
+}
 
 #endif

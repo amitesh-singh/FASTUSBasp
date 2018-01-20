@@ -16,27 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef _DELAY_H
+#define _DELAY_H
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
+extern "C"
+{
+  #include <libopencm3/cm3/nvic.h>
+  #include <libopencm3/cm3/systick.h>
+  #include <libopencm3/stm32/timer.h>
+}
 
-#define ISP_BUS SPI2
-#define ISP_BUS_RCC RCC_SPI2
+#include "rcc.h"
 
-#define ISP_PORT_RCC RCC_GPIOB
-#define ISP_PORT GPIOB
-#define ISP_MOSI GPIO15
-#define ISP_MISO GPIO14
-#define ISP_SCK  GPIO13
+enum class TimeFactor
+{
+  MILLISECONDS, //miliseconds
+  MICROSECONDS //micro second
+};
 
-#define ISP_RST_RCC RCC_GPIOA
-#define ISP_RST_PORT GPIOA
-#define ISP_RST GPIO8
-
-//define this to 1, if blue pill has wrong pull up at USB D+ line
-#define USBDPLUS_WRONG_PULLUP 0
+class time
+{
+public:
+  static void enable(TimeFactor tf = TimeFactor::MILLISECONDS);
+  static void delay(uint32_t ms);
+  static void udelay(uint32_t us);
+  static void disable();
+};
 
 #endif

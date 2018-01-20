@@ -16,27 +16,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef _RCC_H
+#define _RCC_H
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
+extern "C"
+{
+  #include <libopencm3/stm32/rcc.h>
+}
 
-#define ISP_BUS SPI2
-#define ISP_BUS_RCC RCC_SPI2
+//We are not supporting HSI clock
+// This is only to support HSE clock with 8MHz XTAL
+enum class ClockSpeed
+{
+  CLOCK8MHZ,
+  CLOCK12MHZ,
+  CLOCK16MHZ,
+  CLOCK24MHZ,
+  CLOCK48MHZ,
+  CLOCK72MHZ,
+  //overclocked MCU speed
+  CLOCK128MHZ,
+};
 
-#define ISP_PORT_RCC RCC_GPIOB
-#define ISP_PORT GPIOB
-#define ISP_MOSI GPIO15
-#define ISP_MISO GPIO14
-#define ISP_SCK  GPIO13
+//Refer to clock tree in STM32F103 DS to have clear picture.
 
-#define ISP_RST_RCC RCC_GPIOA
-#define ISP_RST_PORT GPIOA
-#define ISP_RST GPIO8
+class RCC
+{
+public:
+  static void enable(rcc_periph_clken);
+  static void disable(rcc_periph_clken);
+  //this sets the chip at 72MHz using hse 8 Mhz
+  static void defaultClockSetup();
+  //use RCC::_clkSpeed to know the set clock speed of MCU
+  static ClockSpeed _clkSpeed;
+};
 
-//define this to 1, if blue pill has wrong pull up at USB D+ line
-#define USBDPLUS_WRONG_PULLUP 0
 
 #endif

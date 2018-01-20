@@ -1,0 +1,19 @@
+[binaries]
+c = 'arm-none-eabi-gcc'
+cpp = 'arm-none-eabi-g++'
+ar = 'arm-none-eabi-ar'
+strip = 'arm-none-eabi-strip'
+objcopy = 'arm-none-eabi-objcopy'
+size = 'arm-none-eabi-size'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'x64'
+endian = 'little'
+
+[target_machine]
+system = 'bare-metel'
+cpu_family = 'stm32'
+cpu = 'STM32F1'
+endian = 'little'

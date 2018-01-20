@@ -49,6 +49,7 @@ find_program(ST_INFO st-info)
 find_program(OPENOCD openocd)
 find_program(STM32FLASH stm32flash)
 
+
 CMAKE_FORCE_C_COMPILER(${ARM_CC} GNU)
 CMAKE_FORCE_CXX_COMPILER(${ARM_CXX} GNU)
 set(CMAKE_ASM_FLAGS ${CMAKE_ASM_FLAGS} "-mcpu=cortex-m3 -mthumb")
@@ -64,9 +65,15 @@ endif ()
 add_definitions(-DSTM32F1)
 
 set(STM32F1_FLAGS "-Os -ggdb -mcpu=cortex-m3 -mthumb -mthumb-interwork -msoft-float" CACHE STRING "")
-
+#Note: remove -fdata-sections and -ffunction-sections fixes problem in which ISR
+# is not getting called.
+# Well, we can use -fdata-sections & -ffunction-sections if 
+# you add __attribute__ ((used)) before function 
+# e.g.
+# __atrribute__ ((used)) int func() {..}
+#
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-exceptions -Wall ${STM32F1_FLAGS} -std=c99 -fdata-sections -ffunction-sections" CACHE STRING "" )
-set(CMAKE_CXX_FLAGS " -fdata-sections -ffunction-sections -fno-exceptions -Wall --std=gnu++14 ${STM32F1_FLAGS} -Wextra -Wshadow -Wredundant-decls " CACHE STRING "" )
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -fno-exceptions -Wall --std=c++14 ${STM32F1_FLAGS} " CACHE STRING "" )
 # -lnosys --specs=rdimon.specs - removed
 set(CMAKE_EXE_LINKER_FLAGS   " -flto -T ${CMAKE_SOURCE_DIR}/libopencm3.ld -nostartfiles -lopencm3_stm32f1 -lc -specs=nosys.specs -Wl,--gc-sections -Wl,--relax" CACHE STRING "")
 
@@ -84,7 +91,7 @@ function(add_executable_stm32f1 NAME)
     set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${NAME}.bin")
 
    add_custom_command(OUTPUT ${NAME}.bin
-#                      COMMAND ${ARM_STRIP} ${NAME}.elf
+                     #COMMAND ${ARM_STRIP} ${NAME}.elf
                       COMMAND ${CMAKE_OBJCOPY} -Obinary ${NAME}.elf ${NAME}.bin
                       COMMAND ${ARM_SIZE} ${NAME}.elf
                       DEPENDS ${NAME})
@@ -94,11 +101,7 @@ function(add_executable_stm32f1 NAME)
     add_custom_target(${NAME}-size COMMAND ${ARM_SIZE} ${NAME}.elf)
     add_custom_target(${NAME}-probe COMMAND ${ST_INFO} --probe)
     add_custom_target(${NAME}-upload COMMAND ${ST_FLASH} write ${NAME}.bin 0x08000000)
-    add_custom_target(${NAME}-ramupload COMMAND ${ST_FLASH} write ${NAME}.bin 0x20000000)
-   # This is inspired from following video.   
-   #https://www.youtube.com/watch?v=0eHpoPZvI3U&t=26s
-   # /usr/share/openocd/target/stm32f103.cfg
-    add_custom_target(${NAME}-ocdupload COMMAND ${OPENOCD} -f interface/stlink-v2.cfg -f target/stm32f103.cfg -c init -c "reset halt" -c "flash write_image erase ${NAME}.bin 0x08000000" -c "reset")
-    add_custom_target(${NAME}-serialupload COMMAND sudo ${STM32FLASH} -w ${NAME}.bin ${SERIAL_PORT})
+     add_custom_target(${NAME}-ocdupload COMMAND ${OPENOCD} -f interface/stlink-v2.cfg -f target/stm32f103.cfg -c init -c "reset halt" -c "flash write_image erase ${NAME}.bin 0x08000000" -c "reset")
+     add_custom_target(${NAME}-serialupload COMMAND ${STM32FLASH} -w ${NAME}.bin ${SERIAL_PORT})
 
 endfunction(add_executable_stm32f1)

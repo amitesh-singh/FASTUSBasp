@@ -16,27 +16,54 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef _PIN_H
+#define _PIN_H
 
-#define INBUILT_LED GPIO13
-#define INBUILT_LED_PORT GPIOC
-#define INBUILT_LED_RCC RCC_GPIOC
+extern "C"
+{
+  #include <libopencm3/stm32/gpio.h>
+}
 
-#define ISP_BUS SPI2
-#define ISP_BUS_RCC RCC_SPI2
+enum class PinMode
+{
+  INPUT,
+  OUTPUT_10MHZ,
+  OUTPUT_2MHZ,
+  OUTPUT_50MHZ,
+};
 
-#define ISP_PORT_RCC RCC_GPIOB
-#define ISP_PORT GPIOB
-#define ISP_MOSI GPIO15
-#define ISP_MISO GPIO14
-#define ISP_SCK  GPIO13
+enum class PinConfig
+{
+  INPUT_ANALOG,
+  INPUT_FLOAT,
+  INPUT_PULLUPDOWN,
+  OUTPUT_PUSHPULL,
+  OUTPUT_OPENDRAIN,
+  OUTPUT_ALTFPUSHPULL,
+  OUTPUT_ALTFOPENDRAIN
+};
 
-#define ISP_RST_RCC RCC_GPIOA
-#define ISP_RST_PORT GPIOA
-#define ISP_RST GPIO8
 
-//define this to 1, if blue pill has wrong pull up at USB D+ line
-#define USBDPLUS_WRONG_PULLUP 0
+class pin
+{
+  volatile uint32_t _pinBaseAddr;
+  uint32_t _port;
+
+  uint8_t _getNativePinMode(PinMode pm);
+
+  uint8_t _getNativePinConfig(PinConfig pc);
+
+public:
+  pin(volatile uint32_t pinBaseAddr, uint32_t port);
+  pin() {}
+
+  
+  void assign(volatile uint32_t pinBaseAddr, uint32_t port);
+  void setMode(PinMode pm, PinConfig pc);
+  void on();
+  void off();
+  void toggle();
+  bool get();
+};
 
 #endif

@@ -6,3 +6,7 @@ cmake_install.cmake
 *.elf
 *.a
 a.out
+builddir/*
+*.swp
+*/builddir/
+*/builddir/*
