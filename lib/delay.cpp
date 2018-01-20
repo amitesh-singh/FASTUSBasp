@@ -1,13 +1,3 @@
-#include "delay.h"
-#include "rcc.h"
-
-static volatile uint32_t system_ms = 0;
-
-extern "C" __attribute__ ((used)) void sys_tick_handler(void)
-{
-   ++system_ms;
-}
-
 /*
  * FASTUSBasp v2 - Fastest programmer for AVR
  * Copyright (C) 2018  Amitesh Singh <singh.amitesh@gmail.com>
@@ -25,6 +15,16 @@ extern "C" __attribute__ ((used)) void sys_tick_handler(void)
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include "delay.h"
+#include "rcc.h"
+
+static volatile uint32_t system_ms = 0;
+
+extern "C" __attribute__ ((used)) void sys_tick_handler(void)
+{
+   ++system_ms;
+}
 
 void time::enable(TimeFactor tf)
 {
