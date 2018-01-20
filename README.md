@@ -1,7 +1,7 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 [![Join the chat at https://gitter.im/FASTUSBasp/Lobby](https://badges.gitter.im/FASTUSBasp/Lobby.svg)](https://gitter.im/FASTUSBasp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board with usb-to-serial support.
+This is the fast ISP programmer for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board with usb-to-serial support.
 
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
@@ -61,6 +61,23 @@ All pins SPI2(PB15, PB14, PB13), Serial(PA10, PA9) and RST(PA8) used are 5V tole
 #### udev rule
 
 Refer to [udev/README.md](udev/README.md)
+
+#### On plugging to PC
+When you plug this device to PC, you should get following message on`dmesg -wH`
+
+```shell
+[Jan20 13:31] usb 3-1.1: new full-speed USB device number 5 using xhci_hcd
+[  +0.107774] usb 3-1.1: New USB device found, idVendor=16c0, idProduct=05dc
+[  +0.000004] usb 3-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  +0.000002] usb 3-1.1: Product: fastusbasp
+[  +0.000002] usb 3-1.1: Manufacturer: http://amitesh-singh.github.io
+[  +0.000001] usb 3-1.1: SerialNumber: AARAV
+[  +0.040797] cdc_acm 3-1.1:1.0: ttyACM0: USB ACM device
+[  +0.000804] usbcore: registered new interface driver cdc_acm
+[  +0.000000] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+```
+
+`/dev/ttyACM0` is the serial port.
 
 #### Probe AVR
 
