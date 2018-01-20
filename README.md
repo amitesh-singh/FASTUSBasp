@@ -196,12 +196,6 @@ $ make fastusbasp-serialupload
 
 ```
 
-### updates 
-
-#### 15th Aug 2017
-made the board on perfboard.
-![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
-
 #### Links
 
 - http://amitesh-singh.github.io/stm32/2017/05/21/FASTUSBasp-programmer-avr.html
