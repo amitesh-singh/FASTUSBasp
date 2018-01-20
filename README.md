@@ -1,7 +1,7 @@
 ### FASTUSBasp programmer for AVR Microcontrollers
 [![Join the chat at https://gitter.im/FASTUSBasp/Lobby](https://badges.gitter.im/FASTUSBasp/Lobby.svg)](https://gitter.im/FASTUSBasp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
+This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board with usb-to-serial support.
 
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
@@ -35,7 +35,7 @@ $ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
 
 ### How to use
 
-#### connections
+#### ISP connections
 
 It uses SPI2 to communicate to AVR.
 
@@ -48,7 +48,15 @@ PA8   |   RST
 5v or 3.3v |     5v   
 GND        |    GND   
 
-All pins SPI2(PB15, PB14, PB13) and RST(PA8) used are 5V tolerant.
+#### Serial connections
+Serial ports are `PA10`(RX) and `PA9` (TX).  
+
+Blue pill | AVR   
+--------- | -------
+PA10      | TX
+PA9       | RX
+
+All pins SPI2(PB15, PB14, PB13), Serial(PA10, PA9) and RST(PA8) used are 5V tolerant.
 
 #### udev rule
 
