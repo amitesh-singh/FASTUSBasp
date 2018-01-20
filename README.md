@@ -3,12 +3,6 @@
 
 This is the fastest usbasp for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board. 
 
-#### PCBs
-![pcb1](https://pbs.twimg.com/media/DIJDorbU0AA_CXj.jpg)
-![pcb2](https://pbs.twimg.com/media/DIJDorIVYAAW44e.jpg)
-![pcb3](https://pbs.twimg.com/media/DIJDoq_U0AA3YuE.jpg)
-![pcb4](https://pbs.twimg.com/media/DIJDorFU0AUCKKl.jpg)
-
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
