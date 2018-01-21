@@ -1,13 +1,3 @@
-#ifndef _SERIAL_H
-#define _SERIAL_H
-
-extern "C"
-{
-#include <libopencm3/stm32/usart.h>
-}
-
-#include "pin.h"
-#include "serialcommon.h"
 /*
  * FASTUSBasp v2 - Fastest programmer for AVR
  * Copyright (C) 2018  Amitesh Singh <singh.amitesh@gmail.com>
@@ -25,6 +15,17 @@ extern "C"
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef _SERIAL_H
+#define _SERIAL_H
+
+extern "C"
+{
+#include <libopencm3/stm32/usart.h>
+}
+
+#include "pin.h"
+#include "serialcommon.h"
 
 //XXX: add recv functions
 
