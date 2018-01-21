@@ -226,12 +226,16 @@ class dmaqueue: public util::queue<txbuf>
          if (_count < _maxitems)
            {
               dma1Ch1Buffer.copy(_data[_back].buffer, buf, len);
+               while (!dma1Ch1Buffer.transferred)
+               {
+                  __asm__ volatile ("nop");
+               }
               _data[_back].len = len;
               ++_back;
               ++_count;
-              if (_back > _maxitems)
+              if (_back >= _maxitems)
                 {
-                   _back-= (_maxitems + 1);
+                   _back = 0;
                 }
            }
       }
@@ -292,10 +296,12 @@ main()
      {
         if (!q.empty())
           {
+            /*
              while (!dma1Ch1Buffer.transferred)
                {
                   __asm__ volatile ("nop");
                }
+               */
              fastserial1.write(q.front().buffer, q.front().len);
              while(!fastserial1.transferred)
                {
