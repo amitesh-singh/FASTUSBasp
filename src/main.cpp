@@ -251,7 +251,8 @@ serial s2;
 int
 main()
 {
-   RCC::defaultClockSetup();
+   //RCC::defaultClockSetup();
+   RCC::clockAt48mhz();
 
    //set up all the clocks
    RCC::enable(INBUILT_LED_RCC);

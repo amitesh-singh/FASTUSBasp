@@ -47,6 +47,7 @@ public:
   static void disable(rcc_periph_clken);
   //this sets the chip at 72MHz using hse 8 Mhz
   static void defaultClockSetup();
+  static void clockAt48mhz();
   //use RCC::_clkSpeed to know the set clock speed of MCU
   static ClockSpeed _clkSpeed;
 };

@@ -41,3 +41,63 @@ void RCC::defaultClockSetup()
 
    rcc_clock_setup_in_hse_8mhz_out_72mhz();
 }
+
+void RCC::clockAt48mhz()
+{
+   _clkSpeed = ClockSpeed::CLOCK48MHZ;
+   /* Enable internal high-speed oscillator. */
+   rcc_osc_on(RCC_HSI);
+   rcc_wait_for_osc_ready(RCC_HSI);
+
+   /* Select HSI as SYSCLK source. */
+   rcc_set_sysclk_source(RCC_CFGR_SW_SYSCLKSEL_HSICLK);
+
+   /* Enable external high-speed oscillator 8MHz. */
+   rcc_osc_on(RCC_HSE);
+   rcc_wait_for_osc_ready(RCC_HSE);
+   rcc_set_sysclk_source(RCC_CFGR_SW_SYSCLKSEL_HSECLK);
+
+   /*
+    * Set prescalers for AHB, ADC, ABP1, ABP2.
+    */
+   rcc_set_hpre(RCC_CFGR_HPRE_SYSCLK_NODIV);    /* Set. 48MHz Max. 72MHz */
+   rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV4);  /* Set. 12MHz Max. 14MHz */
+   rcc_set_ppre1(RCC_CFGR_PPRE1_HCLK_DIV2);    /* Set. 24MHz Max. 36MHz */
+   rcc_set_ppre2(RCC_CFGR_PPRE2_HCLK_NODIV);    /* Set. 48MHz Max. 72MHz */
+   rcc_set_usbpre(RCC_CFGR_USBPRE_PLL_CLK_NODIV); /* Set 48Mhz, Max: 48Mhz */
+
+   /*
+    * Sysclk runs with 24MHz -> 0 waitstates.
+    * 0WS from 0-24MHz
+    * 1WS from 24-48MHz
+    * 2WS from 48-72MHz
+    */
+   flash_set_ws(FLASH_ACR_LATENCY_1WS);
+
+   /*
+    * Set the PLL multiplication factor to 3.
+    * 8MHz (external) * 6 (multiplier) = 48MHz
+    */
+   rcc_set_pll_multiplication_factor(RCC_CFGR_PLLMUL_PLL_CLK_MUL6);
+
+   /* Select HSE as PLL source. */
+   rcc_set_pll_source(RCC_CFGR_PLLSRC_HSE_CLK);
+
+   /*
+    * External frequency undivided before entering PLL
+    * (only valid/needed for HSE).
+    */
+   rcc_set_pllxtpre(RCC_CFGR_PLLXTPRE_HSE_CLK);
+
+   /* Enable PLL oscillator and wait for it to stabilize. */
+   rcc_osc_on(RCC_PLL);
+   rcc_wait_for_osc_ready(RCC_PLL);
+
+   /* Select PLL as SYSCLK source. */
+   rcc_set_sysclk_source(RCC_CFGR_SW_SYSCLKSEL_PLLCLK);
+
+   /* Set the peripheral clock frequencies used */
+   rcc_ahb_frequency = 48000000;
+   rcc_apb1_frequency = 24000000;
+   rcc_apb2_frequency = 48000000;
+}

@@ -13,7 +13,12 @@
                     "/usr/include",
                     "/usr/local/include"
                 ]
-            }
+            },
+            "intelliSenseMode": "clang-x64",
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
         },
         {
             "name": "Linux",
@@ -34,7 +39,8 @@
                     "/home/ami/repos/libopencm3/include",
                     "/home/ami/repos/libopencm3/lib/stm32/f1"
                 ]
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         },
         {
             "name": "Win32",
@@ -47,7 +53,9 @@
                 "path": [
                     "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"
                 ]
-            }
+            },
+            "intelliSenseMode": "msvc-x64"
         }
-    ]
+    ],
+    "version": 3
 }
