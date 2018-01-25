@@ -53,8 +53,8 @@ Serial ports are `PA10`(RX) and `PA9` (TX).
 
 Blue pill | AVR   
 --------- | -------
-PA10      | TX
-PA9       | RX
+PA10      | RX
+PA9       | TX
 
 All pins SPI2(PB15, PB14, PB13), Serial(PA10, PA9) and RST(PA8) used are 5V tolerant.
 
