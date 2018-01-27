@@ -50,6 +50,7 @@ GND        |    GND
 
 #### Serial connections
 Serial ports are `PA10`(RX) and `PA9` (TX).  
+This can be used to debug AVR Microcontrollers.
 
 Blue pill | AVR   
 --------- | -------
