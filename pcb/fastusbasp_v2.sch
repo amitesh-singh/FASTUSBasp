@@ -1,0 +1,884 @@
+EESchema Schematic File Version 4
+LIBS:fastusbasp_v2-cache
+EELAYER 26 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title "FastUSBasp v2"
+Date "2017-11-13"
+Rev "1"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L stm321:STM32F103C8Tx U2
+U 1 1 59FF3F13
+P 9020 5000
+F 0 "U2" H 6220 6725 50  0000 L BNN
+F 1 "STM32F103C8Tx" H 11820 6725 50  0000 R BNN
+F 2 "Housings_QFP:LQFP-48_7x7mm_Pitch0.5mm" H 11820 6675 50  0001 R TNN
+F 3 "" H 9020 5000 50  0001 C CNN
+	1    9020 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L conn1:USB_OTG J3
+U 1 1 59FF4D3C
+P 1570 1630
+F 0 "J3" H 1370 2080 50  0000 L CNN
+F 1 "USB_OTG" H 1370 1980 50  0000 L CNN
+F 2 "Connectors:USB_Micro-B" H 1720 1580 50  0001 C CNN
+F 3 "" H 1720 1580 50  0001 C CNN
+	1    1570 1630
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:GND #PWR01
+U 1 1 59FF551C
+P 1570 2280
+F 0 "#PWR01" H 1570 2030 50  0001 C CNN
+F 1 "GND" H 1570 2130 50  0000 C CNN
+F 2 "" H 1570 2280 50  0001 C CNN
+F 3 "" H 1570 2280 50  0001 C CNN
+	1    1570 2280
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:+5V #PWR02
+U 1 1 59FF5546
+P 2040 1310
+F 0 "#PWR02" H 2040 1160 50  0001 C CNN
+F 1 "+5V" H 2040 1450 50  0000 C CNN
+F 2 "" H 2040 1310 50  0001 C CNN
+F 3 "" H 2040 1310 50  0001 C CNN
+	1    2040 1310
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R5
+U 1 1 59FF5F4A
+P 2440 1630
+F 0 "R5" V 2350 1570 50  0000 C CNN
+F 1 "20R" V 2440 1630 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2370 1630 50  0001 C CNN
+F 3 "" H 2440 1630 50  0001 C CNN
+	1    2440 1630
+	0    1    1    0   
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R6
+U 1 1 59FF6019
+P 2440 1730
+F 0 "R6" V 2520 1670 50  0000 C CNN
+F 1 "20R" V 2440 1730 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2370 1730 50  0001 C CNN
+F 3 "" H 2440 1730 50  0001 C CNN
+	1    2440 1730
+	0    1    1    0   
+$EndComp
+$Comp
+L power1:+5V #PWR03
+U 1 1 59FF606A
+P 2820 1120
+F 0 "#PWR03" H 2820 970 50  0001 C CNN
+F 1 "+5V" H 2820 1260 50  0000 C CNN
+F 2 "" H 2820 1120 50  0001 C CNN
+F 3 "" H 2820 1120 50  0001 C CNN
+	1    2820 1120
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R12
+U 1 1 59FF6081
+P 2820 1400
+F 0 "R12" V 2900 1400 50  0000 C CNN
+F 1 "1.5k" V 2820 1400 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2750 1400 50  0001 C CNN
+F 3 "" H 2820 1400 50  0001 C CNN
+	1    2820 1400
+	-1   0    0    1   
+$EndComp
+Text Label 2890 1630 0    60   ~ 0
+D_P
+Text Label 2890 1730 0    60   ~ 0
+D_N
+$Comp
+L power1:+5V #PWR04
+U 1 1 59FF6C2B
+P 920 3030
+F 0 "#PWR04" H 920 2880 50  0001 C CNN
+F 1 "+5V" H 920 3170 50  0000 C CNN
+F 2 "" H 920 3030 50  0001 C CNN
+F 3 "" H 920 3030 50  0001 C CNN
+	1    920  3030
+	1    0    0    -1  
+$EndComp
+Text Notes 900  2530 0    79   ~ 0
+USB
+$Comp
+L power1:GND #PWR05
+U 1 1 5A088454
+P 1670 3650
+F 0 "#PWR05" H 1670 3400 50  0001 C CNN
+F 1 "GND" H 1670 3500 50  0000 C CNN
+F 2 "" H 1670 3650 50  0001 C CNN
+F 3 "" H 1670 3650 50  0001 C CNN
+	1    1670 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C3
+U 1 1 5A088606
+P 2450 3560
+F 0 "C3" H 2460 3630 50  0000 L CNN
+F 1 "10uF" V 2390 3620 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805" H 2450 3560 50  0001 C CNN
+F 3 "" H 2450 3560 50  0001 C CNN
+	1    2450 3560
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:GND #PWR06
+U 1 1 5A088751
+P 2450 3750
+F 0 "#PWR06" H 2450 3500 50  0001 C CNN
+F 1 "GND" H 2450 3600 50  0000 C CNN
+F 2 "" H 2450 3750 50  0001 C CNN
+F 3 "" H 2450 3750 50  0001 C CNN
+	1    2450 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:+3.3V #PWR07
+U 1 1 5A088933
+P 2450 2990
+F 0 "#PWR07" H 2450 2840 50  0001 C CNN
+F 1 "+3.3V" H 2450 3130 50  0000 C CNN
+F 2 "" H 2450 2990 50  0001 C CNN
+F 3 "" H 2450 2990 50  0001 C CNN
+	1    2450 2990
+	1    0    0    -1  
+$EndComp
+Text Notes 860  3960 0    60   ~ 0
+5V to 3.3V
+$Comp
+L conn1:CONN_01X04 J1
+U 1 1 5A089070
+P 1130 4670
+F 0 "J1" H 1130 4920 50  0000 C CNN
+F 1 "PROG" V 1230 4670 50  0000 C CNN
+F 2 "customfp:Pin_Header_SMD_pads_1x04_pitch2.54mm" H 1130 4670 50  0001 C CNN
+F 3 "" H 1130 4670 50  0001 C CNN
+	1    1130 4670
+	-1   0    0    1   
+$EndComp
+$Comp
+L power1:+3.3V #PWR08
+U 1 1 5A0891DB
+P 1530 4410
+F 0 "#PWR08" H 1530 4260 50  0001 C CNN
+F 1 "+3.3V" H 1530 4550 50  0000 C CNN
+F 2 "" H 1530 4410 50  0001 C CNN
+F 3 "" H 1530 4410 50  0001 C CNN
+	1    1530 4410
+	1    0    0    -1  
+$EndComp
+Text Label 1710 4620 2    60   ~ 0
+SWDIO
+Text Label 1710 4720 2    60   ~ 0
+SWCLK
+$Comp
+L power1:GND #PWR09
+U 1 1 5A0893DB
+P 1520 4910
+F 0 "#PWR09" H 1520 4660 50  0001 C CNN
+F 1 "GND" H 1520 4760 50  0000 C CNN
+F 2 "" H 1520 4910 50  0001 C CNN
+F 3 "" H 1520 4910 50  0001 C CNN
+	1    1520 4910
+	1    0    0    -1  
+$EndComp
+Text Notes 2590 5120 0    60   ~ 0
+Program/\nDebug
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R1
+U 1 1 5A08989E
+P 930 5790
+F 0 "R1" V 1010 5790 50  0000 C CNN
+F 1 "10k" V 930 5790 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 860 5790 50  0001 C CNN
+F 3 "" H 930 5790 50  0001 C CNN
+	1    930  5790
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C1
+U 1 1 5A08996F
+P 930 6130
+F 0 "C1" H 940 6200 50  0000 L CNN
+F 1 "100nF" H 940 6050 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 930 6130 50  0001 C CNN
+F 3 "" H 930 6130 50  0001 C CNN
+	1    930  6130
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:GND #PWR010
+U 1 1 5A089A53
+P 930 6310
+F 0 "#PWR010" H 930 6060 50  0001 C CNN
+F 1 "GND" H 930 6160 50  0000 C CNN
+F 2 "" H 930 6310 50  0001 C CNN
+F 3 "" H 930 6310 50  0001 C CNN
+	1    930  6310
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:+3.3V #PWR011
+U 1 1 5A089AFF
+P 930 5550
+F 0 "#PWR011" H 930 5400 50  0001 C CNN
+F 1 "+3.3V" H 930 5690 50  0000 C CNN
+F 2 "" H 930 5550 50  0001 C CNN
+F 3 "" H 930 5550 50  0001 C CNN
+	1    930  5550
+	1    0    0    -1  
+$EndComp
+Text Label 1180 5970 0    60   ~ 0
+RESET
+Text Label 2060 5900 2    60   ~ 0
+BOOT0
+Text Label 2070 6090 2    60   ~ 0
+BOOT1
+Text Notes 790  6840 0    60   ~ 0
+RESET\n/Boot
+Text Label 5930 3800 2    60   ~ 0
+BOOT0
+Text Label 5930 3600 2    60   ~ 0
+RESET
+$Comp
+L power1:+3.3V #PWR012
+U 1 1 5A08BCB4
+P 8820 2880
+F 0 "#PWR012" H 8820 2730 50  0001 C CNN
+F 1 "+3.3V" H 8820 3020 50  0000 C CNN
+F 2 "" H 8820 2880 50  0001 C CNN
+F 3 "" H 8820 2880 50  0001 C CNN
+	1    8820 2880
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:GND #PWR013
+U 1 1 5A08C064
+P 8820 7090
+F 0 "#PWR013" H 8820 6840 50  0001 C CNN
+F 1 "GND" H 8820 6940 50  0000 C CNN
+F 2 "" H 8820 7090 50  0001 C CNN
+F 3 "" H 8820 7090 50  0001 C CNN
+	1    8820 7090
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C4
+U 1 1 5A08C672
+P 6460 7550
+F 0 "C4" H 6470 7620 50  0000 L CNN
+F 1 "100nf" H 6470 7470 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 6460 7550 50  0001 C CNN
+F 3 "" H 6460 7550 50  0001 C CNN
+	1    6460 7550
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C5
+U 1 1 5A08C7E1
+P 6860 7550
+F 0 "C5" H 6870 7620 50  0000 L CNN
+F 1 "100nf" H 6870 7470 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 6860 7550 50  0001 C CNN
+F 3 "" H 6860 7550 50  0001 C CNN
+	1    6860 7550
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C6
+U 1 1 5A08C8A0
+P 7250 7550
+F 0 "C6" H 7260 7620 50  0000 L CNN
+F 1 "100nf" H 7260 7470 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 7250 7550 50  0001 C CNN
+F 3 "" H 7250 7550 50  0001 C CNN
+	1    7250 7550
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C9
+U 1 1 5A08C92E
+P 7630 7550
+F 0 "C9" H 7640 7620 50  0000 L CNN
+F 1 "100nf" H 7640 7470 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 7630 7550 50  0001 C CNN
+F 3 "" H 7630 7550 50  0001 C CNN
+	1    7630 7550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:GND #PWR014
+U 1 1 5A08CCED
+P 7070 7810
+F 0 "#PWR014" H 7070 7560 50  0001 C CNN
+F 1 "GND" H 7070 7660 50  0000 C CNN
+F 2 "" H 7070 7810 50  0001 C CNN
+F 3 "" H 7070 7810 50  0001 C CNN
+	1    7070 7810
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:+3.3V #PWR015
+U 1 1 5A08CDDE
+P 7070 7210
+F 0 "#PWR015" H 7070 7060 50  0001 C CNN
+F 1 "+3.3V" H 7070 7350 50  0000 C CNN
+F 2 "" H 7070 7210 50  0001 C CNN
+F 3 "" H 7070 7210 50  0001 C CNN
+	1    7070 7210
+	1    0    0    -1  
+$EndComp
+Text Label 12050 6200 0    60   ~ 0
+SWDIO
+Text Label 12050 6300 0    60   ~ 0
+SWCLK
+$Comp
+L fastusbasp_v2-rescue:Crystal_Small-RESCUE-fastusbasp_v2 Y1
+U 1 1 5A08E222
+P 5700 4240
+F 0 "Y1" H 5700 4340 50  0000 C CNN
+F 1 "16MHz" H 5700 4140 50  0000 C CNN
+F 2 "Crystals:Crystal_SMD_HC49-SD" H 5700 4240 50  0001 C CNN
+F 3 "" H 5700 4240 50  0001 C CNN
+	1    5700 4240
+	0    1    1    0   
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R_Small-RESCUE-fastusbasp_v2 R11
+U 1 1 5A08E2E8
+P 5900 4250
+F 0 "R11" H 5930 4270 50  0000 L CNN
+F 1 "1M" H 5930 4210 50  0000 L CNN
+F 2 "Resistors_SMD:R_0603" H 5900 4250 50  0001 C CNN
+F 3 "" H 5900 4250 50  0001 C CNN
+	1    5900 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C7
+U 1 1 5A08E6F3
+P 5370 4100
+F 0 "C7" H 5380 4170 50  0000 L CNN
+F 1 "20pF" H 5380 4020 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5370 4100 50  0001 C CNN
+F 3 "" H 5370 4100 50  0001 C CNN
+	1    5370 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:C_Small-RESCUE-fastusbasp_v2 C8
+U 1 1 5A08E78A
+P 5370 4380
+F 0 "C8" H 5380 4450 50  0000 L CNN
+F 1 "20pF" H 5380 4300 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5370 4380 50  0001 C CNN
+F 3 "" H 5370 4380 50  0001 C CNN
+	1    5370 4380
+	0    1    1    0   
+$EndComp
+Text Label 5870 5100 2    60   ~ 0
+BOOT1
+Text Notes 2430 4310 0    60   ~ 0
+will use pogo\nprogrammer
+Text Label 940  7480 0    60   ~ 0
+ISP_MISO
+Text Label 940  7580 0    60   ~ 0
+ISP_SCK
+Text Label 940  7680 0    60   ~ 0
+ISP_RESET
+Text Label 2740 7480 2    60   ~ 0
+ISP_VCC
+Text Label 2740 7580 2    60   ~ 0
+ISP_MOSI
+$Comp
+L power1:GND #PWR016
+U 1 1 5A19D131
+P 2740 7680
+F 0 "#PWR016" H 2740 7430 50  0001 C CNN
+F 1 "GND" H 2740 7530 50  0000 C CNN
+F 2 "" H 2740 7680 50  0001 C CNN
+F 3 "" H 2740 7680 50  0001 C CNN
+	1    2740 7680
+	1    0    0    -1  
+$EndComp
+Text Notes 760  8060 0    60   ~ 0
+ISP header
+$Comp
+L conn1:CONN_01X04 J2
+U 1 1 5A19D860
+P 1210 8530
+F 0 "J2" H 1210 8780 50  0000 C CNN
+F 1 "CONN_01X04" V 1310 8530 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04_Pitch2.54mm" H 1210 8530 50  0001 C CNN
+F 3 "" H 1210 8530 50  0001 C CNN
+	1    1210 8530
+	-1   0    0    -1  
+$EndComp
+Text Notes 760  8980 0    60   ~ 0
+Serial header
+$Comp
+L power1:+3.3V #PWR017
+U 1 1 5A19E95A
+P 1550 8300
+F 0 "#PWR017" H 1550 8150 50  0001 C CNN
+F 1 "+3.3V" H 1550 8440 50  0000 C CNN
+F 2 "" H 1550 8300 50  0001 C CNN
+F 3 "" H 1550 8300 50  0001 C CNN
+	1    1550 8300
+	1    0    0    -1  
+$EndComp
+Text Label 1550 8480 0    60   ~ 0
+RXD
+Text Label 1550 8580 0    60   ~ 0
+TXD
+$Comp
+L power1:GND #PWR018
+U 1 1 5A19ED98
+P 1550 8740
+F 0 "#PWR018" H 1550 8490 50  0001 C CNN
+F 1 "GND" H 1550 8590 50  0000 C CNN
+F 2 "" H 1550 8740 50  0001 C CNN
+F 3 "" H 1550 8740 50  0001 C CNN
+	1    1550 8740
+	1    0    0    -1  
+$EndComp
+Text Notes 790  10690 0    60   ~ 0
+LEDs
+$Comp
+L fastusbasp_v2-rescue:LED-RESCUE-fastusbasp_v2 D1
+U 1 1 5A19FAFA
+P 1340 9980
+F 0 "D1" H 1340 10080 50  0000 C CNN
+F 1 "LED" H 1340 9880 50  0000 C CNN
+F 2 "LEDs:LED_0603" H 1340 9980 50  0001 C CNN
+F 3 "" H 1340 9980 50  0001 C CNN
+	1    1340 9980
+	0    -1   -1   0   
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R2
+U 1 1 5A19FBD3
+P 1340 9590
+F 0 "R2" V 1420 9590 50  0000 C CNN
+F 1 "1k" V 1340 9590 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 1270 9590 50  0001 C CNN
+F 3 "" H 1340 9590 50  0001 C CNN
+	1    1340 9590
+	-1   0    0    1   
+$EndComp
+$Comp
+L power1:GND #PWR019
+U 1 1 5A19FE49
+P 1340 10200
+F 0 "#PWR019" H 1340 9950 50  0001 C CNN
+F 1 "GND" H 1340 10050 50  0000 C CNN
+F 2 "" H 1340 10200 50  0001 C CNN
+F 3 "" H 1340 10200 50  0001 C CNN
+	1    1340 10200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power1:+3.3V #PWR020
+U 1 1 5A1A011F
+P 1340 9340
+F 0 "#PWR020" H 1340 9190 50  0001 C CNN
+F 1 "+3.3V" H 1340 9480 50  0000 C CNN
+F 2 "" H 1340 9340 50  0001 C CNN
+F 3 "" H 1340 9340 50  0001 C CNN
+	1    1340 9340
+	1    0    0    -1  
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:LED-RESCUE-fastusbasp_v2 D4
+U 1 1 5A1A08C4
+P 2480 9990
+F 0 "D4" H 2480 10090 50  0000 C CNN
+F 1 "LED" H 2480 9890 50  0000 C CNN
+F 2 "LEDs:LED_0603" H 2480 9990 50  0001 C CNN
+F 3 "" H 2480 9990 50  0001 C CNN
+	1    2480 9990
+	0    -1   -1   0   
+$EndComp
+$Comp
+L fastusbasp_v2-rescue:R-RESCUE-fastusbasp_v2 R7
+U 1 1 5A1A08CA
+P 2480 9600
+F 0 "R7" V 2560 9600 50  0000 C CNN
+F 1 "1k" V 2480 9600 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2410 9600 50  0001 C CNN
+F 3 "" H 2480 9600 50  0001 C CNN
+	1    2480 9600
+	-1   0    0    1   
+$EndComp
+$Comp
+L power1:+3.3V #PWR021
+U 1 1 5A1A08D8
+P 2480 9350
+F 0 "#PWR021" H 2480 9200 50  0001 C CNN
+F 1 "+3.3V" H 2480 9490 50  0000 C CNN
+F 2 "" H 2480 9350 50  0001 C CNN
+F 3 "" H 2480 9350 50  0001 C CNN
+	1    2480 9350
+	1    0    0    -1  
+$EndComp
+Text Label 2480 10210 3    60   ~ 0
+PGM_LED
+Text Label 12060 5900 0    60   ~ 0
+RXD
+Text Label 12060 5800 0    60   ~ 0
+TXD
+Text Label 5580 6300 0    60   ~ 0
+ISP_MISO
+Text Label 5580 6200 0    60   ~ 0
+ISP_SCK
+Text Label 5580 6400 0    60   ~ 0
+ISP_MOSI
+Text Label 12060 5700 0    60   ~ 0
+ISP_RESET
+Text Label 5640 4500 0    60   ~ 0
+PGM_LED
+$Comp
+L regul1:LM1117-3.3 U1
+U 1 1 5A57B59B
+P 1670 3210
+F 0 "U1" H 1770 2960 50  0000 C CNN
+F 1 "LM1117-3.3" H 1670 3460 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-223-3_TabPin2" H 1670 3210 50  0001 C CNN
+F 3 "" H 1670 3210 50  0001 C CNN
+	1    1670 3210
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1470 2030 1470 2170
+Wire Wire Line
+	1470 2170 1570 2170
+Wire Wire Line
+	1570 2030 1570 2170
+Wire Wire Line
+	1870 1830 1960 1830
+Wire Wire Line
+	1960 1830 1960 2170
+Connection ~ 1570 2170
+Wire Wire Line
+	2040 1310 2040 1430
+Wire Wire Line
+	2040 1430 1870 1430
+Wire Wire Line
+	2290 1730 1870 1730
+Wire Wire Line
+	1870 1630 2290 1630
+Wire Wire Line
+	2820 1120 2820 1250
+Wire Wire Line
+	2590 1630 2820 1630
+Wire Wire Line
+	2820 1630 2820 1550
+Connection ~ 2820 1630
+Wire Wire Line
+	2890 1730 2590 1730
+Wire Wire Line
+	920  3030 920  3210
+Wire Wire Line
+	920  3210 1370 3210
+Wire Notes Line
+	3140 670  3140 10770
+Wire Notes Line
+	710  670  710  10770
+Wire Notes Line
+	710  2660 3140 2660
+Wire Notes Line
+	3140 670  710  670 
+Wire Wire Line
+	1670 3650 1670 3510
+Wire Wire Line
+	2450 2990 2450 3210
+Wire Wire Line
+	2450 3750 2450 3660
+Connection ~ 2450 3210
+Wire Notes Line
+	710  4060 3140 4060
+Wire Wire Line
+	1530 4410 1530 4520
+Wire Wire Line
+	1530 4520 1330 4520
+Wire Wire Line
+	1710 4620 1330 4620
+Wire Wire Line
+	1710 4720 1330 4720
+Wire Wire Line
+	1520 4910 1520 4820
+Wire Wire Line
+	1520 4820 1330 4820
+Wire Notes Line
+	710  5220 3140 5220
+Wire Wire Line
+	930  5940 930  5970
+Wire Wire Line
+	930  6310 930  6230
+Wire Wire Line
+	930  5550 930  5640
+Wire Wire Line
+	1180 5970 930  5970
+Connection ~ 930  5970
+Wire Notes Line
+	710  6900 3140 6900
+Wire Wire Line
+	5930 3800 6120 3800
+Wire Wire Line
+	5930 3600 6120 3600
+Wire Wire Line
+	8820 2880 8820 3070
+Wire Wire Line
+	8820 3070 8920 3070
+Wire Wire Line
+	9120 3070 9120 3200
+Wire Wire Line
+	9020 3200 9020 3070
+Connection ~ 9020 3070
+Wire Wire Line
+	8920 3200 8920 3070
+Connection ~ 8920 3070
+Connection ~ 8820 3070
+Wire Wire Line
+	8820 6800 8820 6930
+Wire Wire Line
+	8820 6930 8920 6930
+Wire Wire Line
+	9120 6930 9120 6800
+Wire Wire Line
+	8920 6800 8920 6930
+Connection ~ 8920 6930
+Wire Wire Line
+	9020 6800 9020 6930
+Connection ~ 9020 6930
+Connection ~ 8820 6930
+Wire Wire Line
+	6460 7450 6460 7320
+Wire Wire Line
+	6460 7320 6860 7320
+Wire Wire Line
+	7630 7320 7630 7450
+Wire Wire Line
+	7250 7450 7250 7320
+Connection ~ 7250 7320
+Wire Wire Line
+	6860 7450 6860 7320
+Connection ~ 6860 7320
+Wire Wire Line
+	6460 7650 6460 7740
+Wire Wire Line
+	6460 7740 6860 7740
+Wire Wire Line
+	7630 7740 7630 7650
+Wire Wire Line
+	7250 7650 7250 7740
+Connection ~ 7250 7740
+Wire Wire Line
+	6860 7650 6860 7740
+Connection ~ 6860 7740
+Wire Wire Line
+	7070 7810 7070 7740
+Connection ~ 7070 7740
+Wire Wire Line
+	7070 7210 7070 7320
+Connection ~ 7070 7320
+Wire Wire Line
+	12050 6200 11920 6200
+Wire Wire Line
+	12050 6300 11920 6300
+Wire Wire Line
+	5900 4380 5900 4350
+Wire Wire Line
+	5470 4380 5700 4380
+Wire Wire Line
+	6060 4380 6060 4300
+Wire Wire Line
+	6060 4300 6120 4300
+Wire Wire Line
+	5900 4100 5900 4150
+Wire Wire Line
+	5470 4100 5700 4100
+Wire Wire Line
+	6050 4100 6050 4200
+Wire Wire Line
+	6050 4200 6120 4200
+Wire Wire Line
+	5700 4140 5700 4100
+Connection ~ 5900 4100
+Wire Wire Line
+	5700 4340 5700 4380
+Connection ~ 5900 4380
+Wire Wire Line
+	5270 4100 5110 4100
+Wire Wire Line
+	5110 4100 5110 4380
+Wire Wire Line
+	5110 4380 5270 4380
+Connection ~ 5700 4100
+Connection ~ 5700 4380
+Wire Wire Line
+	5870 5100 6120 5100
+Wire Wire Line
+	940  7480 1710 7480
+Wire Wire Line
+	940  7580 1710 7580
+Wire Wire Line
+	1960 7680 2740 7680
+Wire Wire Line
+	1960 7580 2740 7580
+Wire Wire Line
+	1960 7480 2740 7480
+Wire Wire Line
+	940  7680 1710 7680
+Wire Notes Line
+	710  8120 3140 8120
+Wire Notes Line
+	710  9040 3140 9040
+Wire Wire Line
+	1410 8380 1550 8380
+Wire Wire Line
+	1550 8380 1550 8300
+Wire Wire Line
+	1550 8480 1410 8480
+Wire Wire Line
+	1550 8580 1410 8580
+Wire Wire Line
+	1550 8740 1550 8680
+Wire Wire Line
+	1550 8680 1410 8680
+Wire Notes Line
+	710  10770 3140 10770
+Wire Wire Line
+	1340 9740 1340 9830
+Wire Wire Line
+	1340 10200 1340 10130
+Wire Wire Line
+	1340 9340 1340 9440
+Wire Wire Line
+	2480 9750 2480 9840
+Wire Wire Line
+	2480 10210 2480 10140
+Wire Wire Line
+	2480 9350 2480 9450
+Wire Wire Line
+	12060 5800 11920 5800
+Wire Wire Line
+	12060 5900 11920 5900
+Wire Wire Line
+	12060 5700 11920 5700
+Wire Wire Line
+	5640 4500 6120 4500
+Wire Wire Line
+	1970 3210 2450 3210
+Wire Wire Line
+	5580 6400 6120 6400
+Wire Wire Line
+	5580 6300 6120 6300
+Wire Wire Line
+	5580 6200 6120 6200
+Wire Wire Line
+	2170 6090 2170 5990
+Wire Wire Line
+	2170 5990 2460 5990
+Wire Wire Line
+	2460 5990 2460 6220
+Connection ~ 2170 5990
+$Comp
+L power1:GND #PWR022
+U 1 1 5A57F302
+P 2460 6220
+F 0 "#PWR022" H 2460 5970 50  0001 C CNN
+F 1 "GND" H 2460 6070 50  0000 C CNN
+F 2 "" H 2460 6220 50  0001 C CNN
+F 3 "" H 2460 6220 50  0001 C CNN
+	1    2460 6220
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2170 5900 2060 5900
+Wire Wire Line
+	2070 6090 2170 6090
+Text Label 12060 6000 0    60   ~ 0
+D_N
+Wire Wire Line
+	12060 6000 11920 6000
+Text Label 12060 6100 0    60   ~ 0
+D_P
+Wire Wire Line
+	12060 6100 11920 6100
+Wire Wire Line
+	1570 2170 1960 2170
+Wire Wire Line
+	1570 2170 1570 2280
+Wire Wire Line
+	2820 1630 2890 1630
+Wire Wire Line
+	2450 3210 2450 3460
+Wire Wire Line
+	930  5970 930  6030
+Wire Wire Line
+	9020 3070 9120 3070
+Wire Wire Line
+	8920 3070 9020 3070
+Wire Wire Line
+	8820 3070 8820 3200
+Wire Wire Line
+	8920 6930 9020 6930
+Wire Wire Line
+	9020 6930 9120 6930
+Wire Wire Line
+	8820 6930 8820 7090
+Wire Wire Line
+	7250 7320 7630 7320
+Wire Wire Line
+	6860 7320 7070 7320
+Wire Wire Line
+	7250 7740 7630 7740
+Wire Wire Line
+	6860 7740 7070 7740
+Wire Wire Line
+	7070 7740 7250 7740
+Wire Wire Line
+	7070 7320 7250 7320
+Wire Wire Line
+	5900 4100 6050 4100
+Wire Wire Line
+	5900 4380 6060 4380
+Wire Wire Line
+	5700 4100 5900 4100
+Wire Wire Line
+	5700 4380 5900 4380
+Wire Wire Line
+	2170 5990 2170 5900
+$Comp
+L atmel1:AVR-ISP-6 CON1
+U 1 1 5A5F8030
+P 1860 7580
+F 0 "CON1" H 1847 7945 50  0000 C CNN
+F 1 "AVR-ISP-6" H 1847 7854 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x03_Pitch2.54mm" V 1340 7620 50  0001 C CNN
+F 3 "" H 1835 7580 50  0001 C CNN
+	1    1860 7580
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
