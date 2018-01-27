@@ -3,6 +3,9 @@
 
 This is the fast ISP programmer for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board with usb-to-serial support.
 
+#### FastUSBASPv2 board
+![FastUSBASPv2 board](render.png)
+
 #### Perf board
 ![perfboard](https://pbs.twimg.com/media/DHQejIxVoAAy5xX.jpg)
 
