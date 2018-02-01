@@ -57,8 +57,8 @@ This can be used to debug AVR Microcontrollers.
 
 Blue pill | AVR   
 --------- | -------
-PA10      | RX
-PA9       | TX
+PA10      | TX
+PA9       | RX
 
 All pins SPI2(PB15, PB14, PB13), Serial(PA10, PA9) and RST(PA8) used are 5V tolerant.
 
