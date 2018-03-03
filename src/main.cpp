@@ -369,9 +369,10 @@ usbuart_set_line_coding(struct usb_cdc_line_coding *coding)
 
 static struct usb_cdc_line_coding _usb_cdc_line_coding_backup;
 
-static int serial_control_request(usbd_device *usb, struct usb_setup_data *req, uint8_t **buf,
-                                  uint16_t *len, void (**complete)(usbd_device *,
-                                                                   struct usb_setup_data *))
+static enum usbd_request_return_codes
+serial_control_request(usbd_device *usb, struct usb_setup_data *req, uint8_t **buf,
+                       uint16_t *len, void (**complete)(usbd_device *,
+                       struct usb_setup_data *))
 {
    (void) complete;
    (void) usb;
@@ -518,7 +519,7 @@ write_usb(uint8_t* data, uint16_t len)
    return retVal;
 }
 
-static int
+static enum usbd_request_return_codes
 isp_control_endpoint(usbd_device *usb, struct usb_setup_data *req,
                      uint8_t **buf, uint16_t *len,
                      void (**complete)(usbd_device *, struct usb_setup_data *))
