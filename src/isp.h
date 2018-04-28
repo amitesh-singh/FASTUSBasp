@@ -91,6 +91,15 @@ isp_connect(void)
 void
 isp_disconnect(void)
 {
+   rst.setMode(PinMode::INPUT, PinConfig::INPUT_FLOAT);
+   rst.off();
+
+   mosi.setMode(PinMode::INPUT, PinConfig::INPUT_FLOAT);
+   mosi.off();
+
+   sck.setMode(PinMode::INPUT, PinConfig::INPUT_FLOAT);
+   sck.off();
+
    spi_disable(SPI1);
 }
 
