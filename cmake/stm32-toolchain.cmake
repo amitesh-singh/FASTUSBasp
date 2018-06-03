@@ -75,7 +75,7 @@ set(CMAKE_EXE_LINKER_FLAGS   " -flto -T ${CMAKE_SOURCE_DIR}/libopencm3.ld -nosta
 #target_link_libraries(${NAME}.elf opencm3_stm32f1)
 
 include_directories(${LIBOPENCM3_DIR}/include)
-link_directories(${LIBOPENCM3_DIR}/lib)
+link_directories(${LIBOPENCM3_DIR}/lib ${LIBOPENCM3_DIR}/lib/stm32/f1)
 link_libraries(opencm3_stm32f1)
 
 function(add_executable_stm32f1 NAME)
