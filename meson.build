@@ -21,6 +21,7 @@ srcfiles = ['src/main.cpp']
 
 libocm3IncPath = libocm3Path + '/include'
 libocm3LibPath = libocm3Path + '/lib'
+libocm3LibPath2 = libocm3Path + '/lib/stm32/f1'
 
 # check for libopencm3 library
 libocm3lib_dep = compiler_obj.find_library(libocm3cputype, required: true, dirs: libocm3LibPath)
@@ -65,6 +66,7 @@ stm32f1linkargs = ['-Os',
                    '-nostartfiles',
                    '-Wl,--gc-sections',
                    '-L' + libocm3LibPath,
+                   '-L' + libocm3LibPath2,
 #               '-l' + libocm3cputype,
                   ]
 
@@ -90,7 +92,7 @@ run_target('upload', command: [stflash, 'write', exe.full_path() + '.hex', '0x08
 
 if meson.is_cross_build()
    message('cross compiling for ' + cputype)
-   message('     \n                  ninja - generates elf file.
+   message('\n    ninja - generates elf file.
                   ninja hex - generates hex file.
                   ninja upload - upload hex file to stm32 via stlink programmer.
                   ninja probe - probe stlink programmer.
