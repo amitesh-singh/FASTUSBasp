@@ -4,5 +4,5 @@ MEMORY
     ram (xrw)  : ORIGIN = 0x20000000, LENGTH = 20K
 }
 
-INCLUDE stm32f103xc.ld
+INCLUDE stm32f103x8.ld
 
