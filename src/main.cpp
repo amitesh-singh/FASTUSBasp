@@ -293,24 +293,26 @@ main()
                         usb_strings, 3, usbdControlBuf, sizeof(usbdControlBuf));
    usbd_register_set_config_callback(usbd_dev, config_setup);
 
+   uint8_t in_transfer = 0;
    while (1)
      {
-        if (!q.empty())
-          {
-            /*
-             while (!dma1Ch1Buffer.transferred)
-               {
-                  __asm__ volatile ("nop");
+           if (fastserial1.transferred) {
+               if (in_transfer) {
+                       q.pop();
+                       in_transfer = 0;
                }
-               */
-             fastserial1.write(q.front().buffer, q.front().len);
-             while(!fastserial1.transferred)
-               {
-                  __asm__ volatile ("nop");
-               }
-             q.pop();
-          }
 
+               if (!q.empty())
+               {
+                auto buf = q.front();
+                if (buf.len>0) {
+                        fastserial1.write(buf.buffer, buf.len);
+                        in_transfer = 1;
+                } else {
+                        q.pop();
+                }
+          }
+           }
         usbd_poll(usbd_dev);
      }
 
@@ -411,7 +413,7 @@ serial_control_request(usbd_device *usb, struct usb_setup_data *req, uint8_t **b
               memcpy(&_usb_cdc_line_coding_backup, usbCdcLineCondig,
                      sizeof(_usb_cdc_line_coding_backup));
 
-              fastserial1.begin(115200);
+              fastserial1.begin(usbCdcLineCondig->dwDTERate);
               dma1Ch1Buffer.begin();
               usbuart_set_line_coding(&_usb_cdc_line_coding_backup);
 
