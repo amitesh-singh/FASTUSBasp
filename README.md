@@ -66,7 +66,8 @@ All pins SPI2(PB15, PB14, PB13), Serial(PA10, PA9) and RST(PA8) used are 5V tole
 
 Refer to [udev/README.md](udev/README.md)
 
-#### On plugging to PC
+### On plugging to PC
+#### Linux
 When you plug this device to PC, you should get following message on`dmesg -wH`
 
 ```shell
@@ -83,7 +84,16 @@ When you plug this device to PC, you should get following message on`dmesg -wH`
 
 `/dev/ttyACM0` is the serial port.
 
-#### Probe AVR
+#### Windows
+- Download Zadig (https://zadig.akeo.ie/)
+- Insert device to USB. Wait until windows can't install it.
+- Launch Zadig 
+- Select in Zadig our device from ComboBox
+- Select driver Type libusbK
+- Press Install Driver
+- Wait until Zadig is done with installing driver and that results into Windows to detect the device.
+
+### Probe AVR
 
 ```shell
 $ avrdude -c usbasp-clone -p m16
@@ -99,7 +109,7 @@ avrdude: safemode: Fuses OK (E:FF, H:D8, L:CF)
 avrdude done.  Thank you.
 ```
 
-#### Upload program to AVR
+### Upload program to AVR
 
 ```shell
 $ avrdude -c usbasp-clone -p m16 -U flash:w:blink.hex
@@ -136,7 +146,7 @@ avrdude done.  Thank you.
 
 ```
 
-#### Read flash
+### Read flash
 ```shell
 $ avrdude -c usbasp-clone -p m16 -U flash:r:flash.bin:r
 
@@ -169,7 +179,7 @@ $ hexdump flash.bin
 
 ```
 
-#### Flash Read/Write speed
+### Flash Read/Write speed
 
 Flash Write speed: 15 KBps  
 Flash Read Speed: 52.5 KBps
@@ -225,7 +235,7 @@ $ make fastusbasp-serialupload
 
 ```
 
-#### Links
+### Links
 
 - http://amitesh-singh.github.io/stm32/2017/05/21/FASTUSBasp-programmer-avr.html
 - https://hackaday.io/project/21189-fastusbasp-programmer-for-avr
