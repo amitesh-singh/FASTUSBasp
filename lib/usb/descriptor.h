@@ -115,7 +115,7 @@ namespace usb
                 /*
                   Size of the Descriptor in Bytes (18 bytes)
                 */
-                sizeof(usb_device_descriptor),
+        	    USB_DT_DEVICE_SIZE,
                 /*
                   Device Descriptor (0x01)
                 */
@@ -186,7 +186,7 @@ namespace usb
                 /*
                   Size of Descriptor in Bytes (7 bytes)
                 */
-                sizeof(usb_endpoint_descriptor),
+        	    USB_DT_INTERFACE_SIZE,
                 /*
                   Endpoint Descriptor (0x05)
                 */
@@ -255,7 +255,7 @@ namespace usb
                 /*
                   Size of Descriptor in Bytes (9 Bytes)
                 */
-                sizeof(usb_interface_descriptor),
+        	    USB_DT_INTERFACE_SIZE,
                 /*
                   Interface Descriptor (0x04)
                 */
@@ -326,7 +326,7 @@ namespace usb
                 /*
                   Size of Descriptor in Bytes
                 */
-                sizeof(usb_config_descriptor),
+        	   USB_DT_CONFIGURATION_SIZE,
                 /*
                   Configuration Descriptor (0x02)
                 */
