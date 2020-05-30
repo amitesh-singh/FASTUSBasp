@@ -267,7 +267,7 @@ static void IntToString (uint32_t value , char *pbuf , size_t len)
   }
 }
 
-void Get_SerialNum(void)
+static void Get_SerialNum(void)
 {
   uint32_t Device_Serial[3];
 
