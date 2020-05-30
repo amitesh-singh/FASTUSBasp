@@ -3,6 +3,10 @@
 
 This is the fast ISP programmer for AVR MCUs based on cheap stm32f103c8t6 aka `blue-pill` board with usb-to-serial support.
 
+### Release
+
+- v1.0.0:  https://github.com/amitesh-singh/FASTUSBasp/releases/tag/v1.0.0
+
 #### FastUSBASPv2 board
 ![FastUSBASPv2 board](render.png)
 
@@ -18,21 +22,21 @@ Refer to this guide: [http://amitesh-singh.github.io/stm32/2017/10/09/correcting
 ### how to upload firmware
 
 #### blue pill board with correct pullup at USB D+ line
-If you have fixed the pullup at D+ line, use `firmware/fastusbasp.bin`
-The pre-compiled binary is at `firmware/fastusbasp.bin`.
+ Download the binaries from https://github.com/amitesh-singh/FASTUSBasp/releases/tag/v1.0.0
+
+If you have fixed the pullup at D+ line, use `fastusbasp.bin`
+The pre-compiled binary is at `fastusbasp.bin`.
 
 ```shell
-$ git clone https://github.com/amitesh-singh/FASTUSBasp
-$ st-flash write firmware/fastusbasp.bin 0x08000000
+$ st-flash write fastusbasp.bin 0x08000000
 ```
 
 #### blue pill board with wrong pullup at USB D+ line
 In case, you did not fix the wrong pullup at D+ line, use  
-`firmware/fastusbasp-wrongpullup.bin` binary instead
+`fastusbasp-wrongpullup.bin` binary instead
 
 ```shell
-$ git clone https://github.com/amitesh-singh/FASTUSBasp
-$ st-flash write firmware/fastusbasp-wrongpullup.bin 0x08000000
+$ st-flash write fastusbasp-wrongpullup.bin 0x08000000
 ```
 
 
