@@ -39,7 +39,8 @@ void RCC::defaultClockSetup()
 {
    _clkSpeed = ClockSpeed::CLOCK72MHZ;
 
-   rcc_clock_setup_in_hse_8mhz_out_72mhz();
+   //rcc_clock_setup_in_hse_8mhz_out_72mhz();
+   rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
 }
 
 void RCC::clockAt48mhz()
