@@ -32,7 +32,7 @@ namespace util
             queue(int maxitems, T *buf)
               {
                  _front = 0;
-                 _back = 0;
+                 _back = -1;
                  _count = 0;
                  _maxitems = maxitems;
                  // don't use this since it increases the size of binary by 48k on stm32 :/
@@ -45,7 +45,7 @@ namespace util
                  //delete[] _data;
               }
 
-            inline int size()
+            inline int size() const
               {
                  return _count;
               }
@@ -59,47 +59,42 @@ namespace util
 
             T &back()
             {
-                return _data[_back - 1];
+                return _data[_back];
             }
 
             T &pop();
 
             inline void clear()
               {
-                 _front = _back = 0;
+                 _front = 0;
+                 _back = -1;
                  _count = 0;
               }
 
-            inline bool empty()
+            inline bool empty() const
               {
-                 if (_count <= 0)
-                   return true;
-                 else return false;
+                 return (_count == 0);
               }
         };
 
    template<class T>
       void queue<T>::push(const T &item)
         {
-           if(_count < _maxitems)
-             { // Drops out when full
-                _data[_back++]=item;
-                ++_count;
-                // Check wrap around
-                if (_back >= _maxitems)
-                  _back = 0;
-             }
+           //isFull() check is skipped
+           _back = (_back + 1) % _maxitems;
+           _data[_back] = item;
+           _count++;
         }
 
    template<class T>
       T &queue<T>::pop()
         {
-           _front++;
-           --_count;
-           // Check wrap around
-           if (_front >= _maxitems)
-             _front = 0;
-           return _data[_front];
+           //isEmpty() check skipped
+
+           int curr = _front;
+           _front = (_front + 1) % _maxitems;
+           _count--;
+           return _data[curr];
 
         }
 }
