@@ -244,6 +244,14 @@ class dmaqueue: public util::queue<txbuf>
 };
 
 void *__dso_handle = nullptr;
+
+//thanks to @f4grx, https://github.com/f4grx
+extern "C" {
+void _fini(void); //prevent C++ function name mangling
+}
+__attribute__((used)) void _fini(void) {} //make the linker happy
+
+
 dmaqueue q(16);
 
 #ifdef DEBUG
