@@ -6,3 +6,4 @@
 - ~~Add kicad gerber files for adapter board.~~
 - ~~Add panelized pcb design and gerber files~~
 - support TWI to support attiny
+- Blink LED while flashing
