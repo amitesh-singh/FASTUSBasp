@@ -115,8 +115,6 @@ spi_setup(void)
    sck.assign(ISP_PORT, ISP_SCK);
    sck.setMode(PinMode::OUTPUT_2MHZ, PinConfig::OUTPUT_ALTFPUSHPULL);
 
-   spi_reset(ISP_BUS);
-
    // works for >= SPI_CR1_BAUDRATE_FPCLK_DIV_16
    spi_init_master(ISP_BUS, prog_sck,
                    SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE,
