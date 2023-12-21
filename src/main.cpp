@@ -85,7 +85,7 @@ static const char *usb_strings[] =
 };
 
 const static auto dev_desc = usb::device_desc(
-   0x0200, //bcdUSB = 2.00 */
+   0x0200, //bcdUSB = 2.00 
    0xEF, //Class We will define this later in interface classes
    2, //SubClass
    1, //Protocol
