@@ -213,9 +213,10 @@ http://amitesh-singh.github.io/stm32/2017/04/09/setting-stm32-dev-environment-ar
 Make sure you have compiled `libopencm3` library.
 
 ```shell
-$ git clone https://github.com/amitesh-singh/FASTUSBasp
-$ vi config.cmake  # set the libopencm3 path here
-$ cmake .
+$ git clone --recurse-submodules https://github.com/amitesh-singh/FASTUSBasp
+$ mkdir build
+$ cd build
+$ cmake ../
 $ make
 ```
 #### Upload the firmware
