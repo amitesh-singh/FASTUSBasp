@@ -34,7 +34,7 @@ $ st-flash write fastusbasp.bin 0x08000000
 ```
 
 #### blue pill board with wrong pullup at USB D+ line
-In case, you did not fix the wrong pullup at D+ line, use  
+In case, you did not fix the wrong pullup at D+ line, use
 `fastusbasp-wrongpullup.bin` binary instead
 
 ```shell
@@ -48,20 +48,20 @@ $ st-flash write fastusbasp-wrongpullup.bin 0x08000000
 
 It uses SPI2 to communicate to AVR.
 
-Blue pill | AVR   
+Blue pill | AVR
 --------- | -------
-PB15  |   MOSI  
-PB14  |   MISO  
-PB13  |   SCK    
-PA8   |   RST  
-5v or 3.3v |     5v   
-GND        |    GND   
+PB15  |   MOSI
+PB14  |   MISO
+PB13  |   SCK
+PA8   |   RST
+5v or 3.3v |     5v
+GND        |    GND
 
 #### Serial connections
-Serial ports are `PA10`(RX) and `PA9` (TX).  
+Serial ports are `PA10`(RX) and `PA9` (TX).
 This can be used to debug AVR Microcontrollers.
 
-Blue pill | AVR   
+Blue pill | AVR
 --------- | -------
 PA10      | TX
 PA9       | RX
@@ -93,7 +93,7 @@ When you plug this device to PC, you should get following message on`dmesg -wH`
 #### Windows
 - Download Zadig (https://zadig.akeo.ie/)
 - Insert device to USB. Wait until windows can't install it.
-- Launch Zadig 
+- Launch Zadig
 - Select in Zadig our device from ComboBox
 - Select driver Type libusbK
 - Press Install Driver
@@ -171,7 +171,7 @@ avrdude: safemode: Fuses OK (E:FF, H:D8, L:CF)
 
 avrdude done.  Thank you.
 
-$ hexdump flash.bin 
+$ hexdump flash.bin
 0000000 c029 0000 c02f 0000 c02d 0000 c02b 0000
 0000010 c029 0000 c027 0000 c025 0000 c023 0000
 0000020 c021 0000 c01f 0000 c01d 0000 c01b 0000
@@ -181,13 +181,13 @@ $ hexdump flash.bin
 0000060 d002 c017 cfcd 9ab8 9ac0 ef2f ed83 e390
 0000070 5021 4080 4090 f7e1 c000 0000 98c0 ef2f
 0000080 ed83 e390 5021 4080 4090 f7e1 c000 0000
-0000090 cfeb 94f8 cfff                         
+0000090 cfeb 94f8 cfff
 
 ```
 
 ### Flash Read/Write speed
 
-Flash Write speed: 15 KBps  
+Flash Write speed: 15 KBps
 Flash Read Speed: 52.5 KBps
 
 ### Bit clock speed
@@ -195,12 +195,12 @@ Flash Read Speed: 52.5 KBps
    so the `-B bitclock` option might be required to achieve stable communication
 in case target MCU `F_CPU` is bit low < 12MHz
 #### Supported bitclock speed
- 
-- default (without -B): 3 MHz  
-- 1.5 MHz  
-- 750 KHz  
-- 375 KHz  
-- 187.5 KHz  
+
+- default (without -B): 3 MHz
+- 1.5 MHz
+- 750 KHz
+- 375 KHz
+- 187.5 KHz
 
 
 ### how to compile from source and upload the firmware
@@ -221,10 +221,18 @@ $ make
 ```
 #### Upload the firmware
 ##### using STLINK
+###### with st-flash
 connect `st-link` programmer to `blue-pill` and upload the firmware
 
 ```shell
 $ make fastusbasp-upload
+
+```
+
+###### with openocd
+
+```shell
+$ make fasusbasp-ocdupload
 
 ```
 
