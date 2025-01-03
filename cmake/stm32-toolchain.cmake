@@ -1,5 +1,5 @@
 #
-# stm32-toolchain cmake 
+# stm32-toolchain cmake
 # Copyright (C) 2017 Amitesh Singh
 #
 # This library is free software; you can redistribute it and/or
@@ -42,7 +42,7 @@ find_program(ARM_OBJCOPY arm-none-eabi-objcopy
 find_program(ARM_SIZE arm-none-eabi-size
              ${TOOLCHAIN_DIR}/bin)
 find_program(ARM_STRIP arm-none-eabi-strip
-             ${TOOLCHAIN_DIR}/bin)   
+             ${TOOLCHAIN_DIR}/bin)
 
 find_program(ST_FLASH st-flash)
 find_program(ST_INFO st-info)
@@ -95,10 +95,10 @@ function(add_executable_stm32f1 NAME)
     add_custom_target(${NAME}-probe COMMAND ${ST_INFO} --probe)
     add_custom_target(${NAME}-upload COMMAND ${ST_FLASH} write ${NAME}.bin 0x08000000)
     add_custom_target(${NAME}-ramupload COMMAND ${ST_FLASH} write ${NAME}.bin 0x20000000)
-   # This is inspired from following video.   
+   # This is inspired from following video.
    #https://www.youtube.com/watch?v=0eHpoPZvI3U&t=26s
    # /usr/share/openocd/target/stm32f103.cfg
-    add_custom_target(${NAME}-ocdupload COMMAND ${OPENOCD} -f interface/stlink-v2.cfg -f target/stm32f103.cfg -c init -c "reset halt" -c "flash write_image erase ${NAME}.bin 0x08000000" -c "reset")
+    add_custom_target(${NAME}-ocdupload COMMAND ${OPENOCD} -f interface/stlink-v2.cfg -f target/stm32f1x.cfg -c init -c "reset halt" -c "flash write_image erase ${NAME}.bin 0x08000000" -c "reset")
     add_custom_target(${NAME}-serialupload COMMAND sudo ${STM32FLASH} -w ${NAME}.bin ${SERIAL_PORT})
 
 endfunction(add_executable_stm32f1)
