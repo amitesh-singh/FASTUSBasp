@@ -100,7 +100,7 @@ isp_disconnect(void)
    sck.setMode(PinMode::INPUT, PinConfig::INPUT_FLOAT);
    sck.off();
 
-   spi_disable(SPI1);
+   spi_disable(ISP_BUS);
 }
 
 void
